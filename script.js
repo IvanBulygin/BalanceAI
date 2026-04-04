@@ -28,7 +28,7 @@
           dx: (Math.random() - 0.5) * 0.4,
           dy: (Math.random() - 0.5) * 0.3,
           opacity: Math.random() * 0.5 + 0.1,
-          color: ['rgba(56,178,172,', 'rgba(129,230,217,', 'rgba(72,187,120,', 'rgba(154,230,180,'][Math.floor(Math.random() * 4)]
+          color: ['rgba(233,24,218,', 'rgba(142,119,226,', 'rgba(110,121,255,', 'rgba(63,160,245,', 'rgba(243,168,253,'][Math.floor(Math.random() * 5)]
         });
       }
     }
@@ -57,7 +57,7 @@
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(56,178,172,' + (0.06 * (1 - dist / 120)) + ')';
+            ctx.strokeStyle = 'rgba(142,119,226,' + (0.06 * (1 - dist / 120)) + ')';
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -326,7 +326,7 @@
       const btn = ctaForm.querySelector('button');
       const originalHTML = btn.innerHTML;
       btn.innerHTML = 'Welcome aboard! &#x1F389;';
-      btn.style.background = 'linear-gradient(135deg, #48BB78, #9AE6B4)';
+      btn.style.background = 'linear-gradient(135deg, #E918DA, #6E79FF)';
 
       showSpeech('Yay, you joined! 🎉', 4000);
       character.className = 'character excited sparkle';
