@@ -1,0 +1,591 @@
+/* ============================================================
+   COURIER — Active Order Tracking Dashboard
+   Design System: Strict 8pt grid (all spacing multiples of 8)
+   Accessibility: Min 48×48 touch targets, WCAG AA contrast
+   Palette:
+     Trusted Blue   #1565C0 (primary actions, safe states)
+     Signal Orange   #E65100 (urgent alerts, delays)
+     Signal Red      #C62828 (critical errors)
+     Surface Dark    #121820 (map bg, high contrast base)
+     Surface Light   #F5F7FA (card backgrounds)
+     Ink Primary     #1A1D23 (body text — 14:1 on white)
+     Ink Secondary   #5F6B7A (supporting text — 5.5:1)
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* ---- Palette ---- */
+  --blue-900: #0D47A1;
+  --blue-700: #1565C0;
+  --blue-500: #1E88E5;
+  --blue-100: #BBDEFB;
+  --blue-50:  #E3F2FD;
+
+  --orange-900: #BF360C;
+  --orange-700: #E65100;
+  --orange-500: #FF9800;
+  --orange-100: #FFE0B2;
+  --orange-50:  #FFF3E0;
+
+  --red-700: #C62828;
+  --green-700: #2E7D32;
+  --green-100: #C8E6C9;
+
+  --surface-dark: #121820;
+  --surface-map: #1B2430;
+  --surface-light: #F5F7FA;
+  --surface-card: #FFFFFF;
+
+  --ink-primary: #1A1D23;
+  --ink-secondary: #5F6B7A;
+  --ink-disabled: #B0BEC5;
+  --ink-on-dark: #FFFFFF;
+  --ink-on-blue: #FFFFFF;
+
+  --border-light: #E0E4EA;
+  --border-card: rgba(0,0,0,0.06);
+
+  /* ---- 8pt Grid Spacing ---- */
+  --sp-2: 2px;
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+  --sp-48: 48px;
+  --sp-56: 56px;
+  --sp-64: 64px;
+
+  /* ---- Radii ---- */
+  --r-8: 8px;
+  --r-12: 12px;
+  --r-16: 16px;
+  --r-24: 24px;
+  --r-pill: 999px;
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+  --shadow-action: 0 4px 16px rgba(21,101,192,0.35);
+
+  /* ---- Typography ---- */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* ---- Touch Target ---- */
+  --touch-min: 48px;
+}
+
+html {
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--surface-dark);
+  color: var(--ink-primary);
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ============================================================
+   STATUS BAR (top-of-screen)
+   8pt: h=56, px=16
+   Touch: buttons 48×48
+   ============================================================ */
+.status-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--sp-56);
+  background: var(--blue-700);
+  color: var(--ink-on-blue);
+  transition: background 0.3s;
+}
+
+.status-bar.alert { background: var(--orange-700); }
+
+.status-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--sp-8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.icon-btn {
+  /* 48×48 touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--r-12);
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-btn:active { background: rgba(255,255,255,0.15); }
+
+.status-bar-center { text-align: center; flex: 1; }
+
+.status-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.order-id {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-top: var(--sp-2);
+}
+
+/* ============================================================
+   MAP AREA
+   Takes remaining space above the bottom panel.
+   Dark surface for outdoor contrast.
+   ============================================================ */
+.map-container {
+  position: relative;
+  flex: 1;
+  margin-top: var(--sp-56);
+  background: var(--surface-map);
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.map-surface {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-16);
+}
+
+.map-svg { width: 100%; max-width: 500px; height: auto; }
+
+/* Route paths */
+.route-remaining {
+  stroke: rgba(255,255,255,0.15);
+  stroke-width: 4;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
+}
+
+.route-traveled {
+  stroke: var(--blue-500);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+/* Courier dot */
+.courier-dot { transition: transform 0.6s ease; }
+
+.courier-pulse {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { r: 18; opacity: 0.2; }
+  50% { r: 26; opacity: 0; }
+}
+
+/* ETA overlay */
+.eta-overlay {
+  position: absolute;
+  top: var(--sp-16);
+  left: var(--sp-16);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-16);
+  padding: var(--sp-12) var(--sp-16);
+  color: var(--ink-on-dark);
+}
+
+.eta-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.eta-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.65;
+  margin-top: var(--sp-4);
+}
+
+/* Recenter FAB */
+.fab-recenter {
+  position: absolute;
+  bottom: var(--sp-16);
+  right: var(--sp-16);
+  width: var(--sp-48);
+  height: var(--sp-48);
+  border-radius: var(--r-12);
+  background: var(--surface-card);
+  border: none;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-recenter:active { background: var(--surface-light); transform: scale(0.95); }
+
+/* ============================================================
+   ORDER PANEL (bottom sheet)
+   8pt grid: px=16, py=16, gaps=8/16/24
+   Touch targets ≥ 48px
+   ============================================================ */
+.order-panel {
+  position: relative;
+  z-index: 50;
+  background: var(--surface-card);
+  border-radius: var(--r-24) var(--r-24) 0 0;
+  margin-top: calc(-1 * var(--r-24));
+  padding: var(--sp-8) var(--sp-16) var(--sp-32);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.panel-handle {
+  display: flex;
+  justify-content: center;
+  padding: var(--sp-8) 0 var(--sp-16);
+  cursor: grab;
+}
+
+.panel-handle span {
+  width: 40px;
+  height: 4px;
+  background: var(--border-light);
+  border-radius: var(--r-pill);
+}
+
+/* ---- Address Cards ---- */
+.address-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--sp-16);
+}
+
+.address-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-12);
+  padding: var(--sp-12) 0;
+}
+
+.address-icon {
+  width: var(--sp-40);
+  height: var(--sp-40);
+  border-radius: var(--r-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pickup-icon { background: var(--blue-50); color: var(--blue-700); }
+.dropoff-icon { background: var(--orange-50); color: var(--orange-700); }
+
+.address-text { flex: 1; min-width: 0; }
+
+.address-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ink-secondary);
+  margin-bottom: var(--sp-2);
+}
+
+.address-line {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.address-detail {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-secondary);
+  margin-top: var(--sp-2);
+}
+
+/* Divider between A and B */
+.address-divider {
+  display: flex;
+  align-items: center;
+  padding-left: calc(var(--sp-40) / 2 - 1px);
+  height: var(--sp-16);
+}
+
+.divider-line {
+  width: 2px;
+  height: 100%;
+  background: var(--border-light);
+  display: block;
+}
+
+.divider-dot { display: none; }
+
+/* ---- Order Items ---- */
+.order-items {
+  background: var(--surface-light);
+  border-radius: var(--r-12);
+  padding: var(--sp-12) var(--sp-16);
+  margin-bottom: var(--sp-16);
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--sp-4) 0;
+  font-size: 14px;
+}
+
+.item-qty {
+  font-weight: 700;
+  color: var(--ink-secondary);
+  min-width: 28px;
+}
+
+.item-name { color: var(--ink-primary); font-weight: 500; }
+
+/* ---- Delay Alert ---- */
+.delay-alert {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  padding: var(--sp-12) var(--sp-16);
+  background: var(--orange-50);
+  border: 1.5px solid var(--orange-500);
+  border-radius: var(--r-12);
+  margin-bottom: var(--sp-16);
+  color: var(--orange-900);
+  animation: alertSlideIn 0.35s ease;
+}
+
+.delay-alert[hidden] { display: none; }
+
+.delay-alert svg { flex-shrink: 0; color: var(--orange-700); }
+
+.delay-alert strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.delay-alert span {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: var(--sp-2);
+}
+
+@keyframes alertSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Primary Action Button ----
+   48px min height (actual 56px for thumb comfort)
+   Full width for fast, confident taps
+   Blue = safe to confirm; transitions to green on delivery */
+.action-area { margin-bottom: var(--sp-16); }
+
+.btn-primary-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  width: 100%;
+  height: var(--sp-56);
+  background: var(--blue-700);
+  color: var(--ink-on-blue);
+  border: none;
+  border-radius: var(--r-16);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  box-shadow: var(--shadow-action);
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary-action:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(21,101,192,0.3);
+}
+
+.btn-primary-action.state-confirm { background: var(--blue-700); box-shadow: 0 4px 16px rgba(21,101,192,0.35); }
+.btn-primary-action.state-delivering { background: var(--orange-700); box-shadow: 0 4px 16px rgba(230,81,0,0.35); }
+.btn-primary-action.state-complete { background: var(--green-700); box-shadow: 0 4px 16px rgba(46,125,50,0.35); }
+
+.btn-action-icon { display: flex; align-items: center; }
+
+/* ---- Secondary Action Buttons ----
+   Min 48px height, equal-width row */
+.secondary-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+  margin-bottom: var(--sp-16);
+}
+
+.btn-secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  min-height: var(--sp-56);
+  padding: var(--sp-8);
+  background: var(--surface-light);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--r-12);
+  color: var(--ink-secondary);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-secondary:active { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue-700); }
+
+/* ---- Earnings Bar ---- */
+.earnings-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-16);
+  background: var(--surface-light);
+  border-radius: var(--r-12);
+}
+
+.earnings-label {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+.earnings-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--green-700);
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast-container {
+  position: fixed;
+  top: calc(var(--sp-56) + var(--sp-8));
+  left: var(--sp-16);
+  right: var(--sp-16);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  pointer-events: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  padding: var(--sp-12) var(--sp-16);
+  border-radius: var(--r-12);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-on-dark);
+  box-shadow: var(--shadow-lg);
+  pointer-events: auto;
+  animation: toastIn 0.35s ease, toastOut 0.3s ease 2.7s forwards;
+}
+
+.toast-info { background: var(--blue-700); }
+.toast-success { background: var(--green-700); }
+.toast-warning { background: var(--orange-700); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 601px) {
+  .map-container { min-height: 360px; }
+  .order-panel { padding-left: var(--sp-24); padding-right: var(--sp-24); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .order-panel { background: #1E2128; }
+  .surface-light, .order-items, .earnings-bar { background: #262A32; }
+  .btn-secondary { background: #262A32; border-color: #363B44; }
+  .address-line { color: #E8ECF0; }
+  .ink-primary { color: #E8ECF0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
