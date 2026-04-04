@@ -99,6 +99,159 @@ body {
 }
 
 /* ============================================================
+   CHARACTER (floating mascot)
+   Positioned fixed, reacts to order state.
+   ============================================================ */
+.character {
+  position: fixed;
+  width: 80px;
+  height: 100px;
+  z-index: 150;
+  pointer-events: none;
+  right: var(--sp-8);
+  top: calc(var(--sp-56) + var(--sp-8));
+  transition: right 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s ease;
+  filter: drop-shadow(0 6px 16px rgba(142, 119, 226, 0.3));
+  will-change: right, top, transform;
+}
+
+.character-svg { width: 100%; height: 100%; }
+
+/* Idle float */
+.character.idle { animation: charFloat 3s ease-in-out infinite; }
+
+@keyframes charFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1.5deg); }
+  66% { transform: translateY(3px) rotate(-1deg); }
+}
+
+/* Flame tips flicker */
+.character .char-flame-tip {
+  animation: flameTip 1.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.character .char-flame-tip-1 { animation-delay: 0s; }
+.character .char-flame-tip-2 { animation-delay: 0.3s; }
+.character .char-flame-tip-3 { animation-delay: 0.6s; }
+
+@keyframes flameTip {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.8; }
+  50% { transform: scaleY(1.3) translateY(-3px); opacity: 1; }
+}
+
+/* Waving */
+.character.waving .char-arm-right {
+  animation: charWave 0.5s ease-in-out 3;
+  transform-origin: 98px 92px;
+}
+@keyframes charWave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-35deg); }
+}
+
+/* Excited / jumping */
+.character.excited { animation: charJump 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 2; }
+@keyframes charJump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-20px) scale(1.06); }
+  70% { transform: translateY(-4px) scale(0.97); }
+}
+.character.excited .char-arm-left,
+.character.excited .char-arm-right {
+  animation: charArmsUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 2;
+}
+@keyframes charArmsUp {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-40deg); }
+}
+
+/* Thinking */
+.character.thinking .char-arm-right {
+  animation: charThink 2.5s ease-in-out infinite;
+  transform-origin: 98px 92px;
+}
+@keyframes charThink {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-18deg) translateY(-3px); }
+}
+
+/* Walking */
+.character.walking .char-leg-left {
+  animation: charWalkL 0.35s ease-in-out infinite alternate;
+  transform-origin: 72px 122px;
+}
+.character.walking .char-leg-right {
+  animation: charWalkR 0.35s ease-in-out infinite alternate;
+  transform-origin: 88px 122px;
+}
+@keyframes charWalkL { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+@keyframes charWalkR { from { transform: rotate(10deg); } to { transform: rotate(-10deg); } }
+
+/* Sparkles */
+.character.sparkle .char-sparkles circle { animation: charSparkle 1.5s ease-in-out infinite; }
+.character.sparkle .char-sparkles circle:nth-child(1) { animation-delay: 0s; }
+.character.sparkle .char-sparkles circle:nth-child(2) { animation-delay: 0.3s; }
+.character.sparkle .char-sparkles circle:nth-child(3) { animation-delay: 0.6s; }
+.character.sparkle .char-sparkles circle:nth-child(4) { animation-delay: 0.9s; }
+@keyframes charSparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.8); }
+}
+
+/* Blink */
+.character .char-eye-left, .character .char-eye-right {
+  animation: charBlink 4s ease-in-out infinite;
+}
+@keyframes charBlink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.05); }
+}
+
+/* Speech bubble */
+.character-speech {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  background: var(--surface-card);
+  color: var(--ink-primary);
+  padding: var(--sp-8) var(--sp-12);
+  border-radius: var(--r-12);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s ease;
+  transform: translateY(6px);
+}
+.character-speech.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.character-speech::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  border: 6px solid transparent;
+  border-top-color: var(--surface-card);
+}
+
+/* Responsive sizing */
+@media (max-width: 400px) {
+  .character { width: 60px; height: 75px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character { display: none; }
+}
+
+/* ============================================================
    STATUS BAR (top-of-screen)
    8pt: h=56, px=16
    Touch: buttons 48×48

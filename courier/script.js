@@ -21,6 +21,44 @@
   let progress = 0;     // 0–1 along route
   let isDelayed = false;
 
+  /* ---- Character State ---- */
+  const character = document.getElementById('character');
+  const charSpeech = document.getElementById('character-speech');
+  let charSpeechTimeout = null;
+
+  function setCharacterAnim(classes, speechText, speechMs) {
+    character.className = 'character';
+    requestAnimationFrame(() => {
+      classes.forEach(c => character.classList.add(c));
+    });
+    if (speechText) {
+      if (charSpeechTimeout) clearTimeout(charSpeechTimeout);
+      charSpeech.textContent = speechText;
+      charSpeech.classList.add('visible');
+      charSpeechTimeout = setTimeout(() => charSpeech.classList.remove('visible'), speechMs || 3000);
+    }
+  }
+
+  /* ---- Mouse-following eyes ---- */
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+  function updateCharEyes() {
+    if (!character) return;
+    const rect = character.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height * 0.35;
+    const dx = mouseX - cx, dy = mouseY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const max = 2.5;
+    const mx = dist > 0 ? (dx / dist) * Math.min(max, dist / 40) : 0;
+    const my = dist > 0 ? (dy / dist) * Math.min(max, dist / 40) : 0;
+    character.querySelectorAll('.char-pupil').forEach(p => {
+      p.setAttribute('transform', `translate(${mx}, ${my})`);
+    });
+    requestAnimationFrame(updateCharEyes);
+  }
+
   /* ---- DOM References ---- */
   const statusBar    = document.getElementById('status-bar');
   const statusLabel  = document.getElementById('status-label');
@@ -82,6 +120,7 @@
     document.getElementById('delay-detail').textContent = 'ETA updated to ' + newEtaMin + ' min';
     statusBar.classList.add('alert');
     showToast('⚠️ Delay detected: ' + reason, 'warning');
+    setCharacterAnim(['idle', 'thinking'], 'Traffic ahead... ⚠️', 3500);
   }
 
   function clearDelay() {
@@ -101,6 +140,7 @@
         btnText.textContent = 'Arrived at Pickup';
         btnAction.className = 'btn-primary-action state-confirm';
         btnIcon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+        setCharacterAnim(['idle', 'waving'], "Let's go! 🚗", 3000);
         break;
 
       case STATES.AT_PICKUP:
@@ -111,6 +151,7 @@
         btnAction.className = 'btn-primary-action state-confirm';
         btnIcon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 12l2 2 4-4"/></svg>';
         showToast('📍 You arrived at Café Aroma', 'info');
+        setCharacterAnim(['idle', 'thinking'], 'Grab the order! 📦', 3500);
         break;
 
       case STATES.DELIVERING:
@@ -123,6 +164,7 @@
         btnIcon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>';
         showToast('📦 Pickup confirmed! Heading to drop-off', 'success');
         clearDelay();
+        setCharacterAnim(['idle', 'walking'], 'On our way! 🏃', 3000);
         break;
 
       case STATES.DELIVERED:
@@ -136,6 +178,7 @@
         showToast('✅ Delivery complete! +$8.40 earned', 'success');
         progress = 1;
         updateCourierPosition(1);
+        setCharacterAnim(['excited', 'sparkle'], 'Delivered! 🎉 +$8.40', 5000);
         break;
     }
   }
@@ -230,6 +273,7 @@
     updateCourierPosition(0);
     transitionTo(STATES.HEADING_TO_PICKUP);
     startSimulation();
+    updateCharEyes();
   }
 
   if (document.readyState === 'loading') {
