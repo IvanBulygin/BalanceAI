@@ -78,43 +78,55 @@
   const speech = document.getElementById('character-speech');
   const nav = document.getElementById('nav');
 
-  const sections = ['hero', 'features', 'how-it-works', 'testimonials', 'pricing', 'cta'];
+  const sections = ['hero', 'loop', 'how-it-works', 'features', 'compare', 'built', 'tech', 'cta'];
 
   const sectionBehaviors = {
     'hero': {
       classes: ['idle', 'waving'],
       position: { xPercent: 85, yPercent: 30 },
-      speech: 'Hey there! Welcome! 👋',
+      speech: 'Hey! I know 1,746 studies! 📚',
       speechDuration: 3500
     },
-    'features': {
-      classes: ['idle', 'sparkle'],
-      position: { xPercent: 88, yPercent: 40 },
-      speech: 'Look at all these cool features!',
+    'loop': {
+      classes: ['idle', 'excited'],
+      position: { xPercent: 90, yPercent: 35 },
+      speech: 'The complete wellness loop!',
       speechDuration: 3000
     },
     'how-it-works': {
       classes: ['idle', 'thinking'],
       position: { xPercent: 8, yPercent: 45 },
-      speech: 'Let me walk you through it...',
+      speech: 'All backed by real science...',
       speechDuration: 3000
     },
-    'testimonials': {
+    'features': {
+      classes: ['idle', 'sparkle'],
+      position: { xPercent: 88, yPercent: 40 },
+      speech: 'No one else has all this! ✨',
+      speechDuration: 3000
+    },
+    'compare': {
+      classes: ['idle', 'thinking'],
+      position: { xPercent: 7, yPercent: 35 },
+      speech: 'Check the competition... 👀',
+      speechDuration: 3000
+    },
+    'built': {
       classes: ['idle', 'excited'],
       position: { xPercent: 90, yPercent: 35 },
-      speech: 'People really love this! 🎉',
+      speech: 'So much already works! 🎉',
       speechDuration: 3000
     },
-    'pricing': {
-      classes: ['idle', 'thinking'],
-      position: { xPercent: 7, yPercent: 40 },
-      speech: 'Such great value!',
+    'tech': {
+      classes: ['idle', 'sparkle'],
+      position: { xPercent: 8, yPercent: 40 },
+      speech: 'Lean stack, big results!',
       speechDuration: 2500
     },
     'cta': {
       classes: ['idle', 'excited', 'sparkle'],
       position: { xPercent: 85, yPercent: 25 },
-      speech: "Let's get started! 🚀",
+      speech: "Let's build this! 🚀",
       speechDuration: 3500
     }
   };
