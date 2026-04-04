@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BalanceAI — Your AI Wellness Companion</title>
+  <title>Balance AI — Your Wellness Buddy</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,58 +13,92 @@
   <!-- Particle Canvas Background -->
   <canvas id="particles" class="particles-canvas"></canvas>
 
-  <!-- Animated Character (follows scroll path) -->
+  <!-- Animated Wellness Buddy Character -->
   <div id="character" class="character" aria-hidden="true">
-    <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" class="character-svg">
+    <svg viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg" class="character-svg">
       <defs>
-        <radialGradient id="bodyGrad" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#7C6CF0"/>
-          <stop offset="100%" stop-color="#5A4BD1"/>
+        <radialGradient id="bodyGrad" cx="50%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#7CDFB8"/>
+          <stop offset="100%" stop-color="#38B2AC"/>
         </radialGradient>
-        <radialGradient id="faceGrad" cx="45%" cy="35%" r="55%">
-          <stop offset="0%" stop-color="#FFF3C4"/>
-          <stop offset="100%" stop-color="#FFEAA7"/>
+        <radialGradient id="bellyGrad" cx="50%" cy="45%" r="50%">
+          <stop offset="0%" stop-color="#F0FFF4"/>
+          <stop offset="100%" stop-color="#C6F6D5"/>
         </radialGradient>
+        <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#68D391"/>
+          <stop offset="100%" stop-color="#38A169"/>
+        </linearGradient>
+        <linearGradient id="leafGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#9AE6B4"/>
+          <stop offset="100%" stop-color="#48BB78"/>
+        </linearGradient>
+        <filter id="charShadow" x="-20%" y="-10%" width="140%" height="130%">
+          <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#38B2AC" flood-opacity="0.2"/>
+        </filter>
       </defs>
-      <ellipse class="char-body" cx="60" cy="100" rx="30" ry="40" fill="url(#bodyGrad)"/>
-      <circle class="char-face" cx="60" cy="55" r="28" fill="url(#faceGrad)"/>
+
+      <!-- Leaf / sprout on head -->
+      <g class="char-leaf">
+        <path d="M70 28 Q78 8 90 12 Q82 22 76 30" fill="url(#leafGrad)" stroke="#2F855A" stroke-width="0.8"/>
+        <path d="M70 28 Q62 10 52 16 Q60 24 66 30" fill="url(#leafGrad2)" stroke="#2F855A" stroke-width="0.8"/>
+        <line x1="70" y1="28" x2="70" y2="38" stroke="#2F855A" stroke-width="2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Round blob body -->
+      <ellipse class="char-body" cx="70" cy="100" rx="42" ry="48" fill="url(#bodyGrad)" filter="url(#charShadow)"/>
+
+      <!-- Lighter belly patch -->
+      <ellipse cx="70" cy="108" rx="26" ry="28" fill="url(#bellyGrad)" opacity="0.6"/>
+
+      <!-- Face area (part of body — no separate head) -->
+      <!-- Eyes -->
       <g class="char-eye char-eye-left">
-        <ellipse cx="50" cy="50" rx="5.5" ry="6.5" fill="#2D3436"/>
-        <ellipse class="char-pupil" cx="51" cy="49" rx="2.2" ry="2.8" fill="#FFFFFF"/>
+        <ellipse cx="56" cy="82" rx="7" ry="8" fill="#1A202C"/>
+        <ellipse class="char-pupil" cx="57.5" cy="80" rx="3" ry="3.5" fill="#FFFFFF"/>
+        <ellipse cx="54" cy="78" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.5)" transform="rotate(-20 54 78)"/>
       </g>
       <g class="char-eye char-eye-right">
-        <ellipse cx="70" cy="50" rx="5.5" ry="6.5" fill="#2D3436"/>
-        <ellipse class="char-pupil" cx="71" cy="49" rx="2.2" ry="2.8" fill="#FFFFFF"/>
+        <ellipse cx="84" cy="82" rx="7" ry="8" fill="#1A202C"/>
+        <ellipse class="char-pupil" cx="85.5" cy="80" rx="3" ry="3.5" fill="#FFFFFF"/>
+        <ellipse cx="82" cy="78" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.5)" transform="rotate(-20 82 78)"/>
       </g>
-      <path class="char-mouth" d="M50 65 Q60 76 70 65" stroke="#2D3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <ellipse class="char-blush" cx="39" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.5"/>
-      <ellipse class="char-blush" cx="81" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.5"/>
+
+      <!-- Smile -->
+      <path class="char-mouth" d="M60 98 Q70 110 80 98" stroke="#1A202C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Blush -->
+      <ellipse class="char-blush" cx="44" cy="95" rx="7" ry="4" fill="#FEB2B2" opacity="0.5"/>
+      <ellipse class="char-blush" cx="96" cy="95" rx="7" ry="4" fill="#FEB2B2" opacity="0.5"/>
+
+      <!-- Left Arm (stubby) -->
       <g class="char-arm char-arm-left">
-        <path d="M30 90 Q15 78 10 63" stroke="url(#bodyGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <circle cx="10" cy="61" r="5.5" fill="url(#faceGrad)"/>
+        <path d="M30 92 Q18 82 14 70" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
       </g>
+      <!-- Right Arm (stubby) -->
       <g class="char-arm char-arm-right">
-        <path d="M90 90 Q105 78 110 63" stroke="url(#bodyGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <circle cx="110" cy="61" r="5.5" fill="url(#faceGrad)"/>
+        <path d="M110 92 Q122 82 126 70" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
       </g>
+
+      <!-- Left Foot -->
       <g class="char-leg char-leg-left">
-        <path d="M45 135 L40 155" stroke="url(#bodyGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <ellipse cx="38" cy="157" rx="9" ry="4.5" fill="#A29BFE"/>
+        <ellipse cx="52" cy="146" rx="14" ry="8" fill="#38B2AC"/>
       </g>
+      <!-- Right Foot -->
       <g class="char-leg char-leg-right">
-        <path d="M75 135 L80 155" stroke="url(#bodyGrad)" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <ellipse cx="82" cy="157" rx="9" ry="4.5" fill="#A29BFE"/>
+        <ellipse cx="88" cy="146" rx="14" ry="8" fill="#38B2AC"/>
       </g>
+
+      <!-- Sparkle/glow effects -->
       <g class="char-sparkles">
-        <circle cx="15" cy="30" r="2.5" fill="#FDCB6E" opacity="0"/>
-        <circle cx="108" cy="35" r="2" fill="#74B9FF" opacity="0"/>
-        <circle cx="18" cy="115" r="2" fill="#55EFC4" opacity="0"/>
-        <circle cx="102" cy="110" r="2.5" fill="#FF7675" opacity="0"/>
-        <circle cx="60" cy="18" r="1.8" fill="#FD79A8" opacity="0"/>
+        <circle cx="18" cy="55" r="2.5" fill="#F6E05E" opacity="0"/>
+        <circle cx="122" cy="60" r="2" fill="#90CDF4" opacity="0"/>
+        <circle cx="22" cy="130" r="2" fill="#9AE6B4" opacity="0"/>
+        <circle cx="118" cy="125" r="2.5" fill="#FEB2B2" opacity="0"/>
+        <circle cx="70" cy="18" r="2" fill="#C4B5FD" opacity="0"/>
       </g>
     </svg>
     <div class="character-speech" id="character-speech"></div>
-    <div class="character-trail" id="character-trail"></div>
   </div>
 
   <!-- Navigation -->
@@ -72,13 +106,14 @@
     <div class="nav-container">
       <a href="#" class="nav-logo">
         <span class="logo-icon">
-          <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M11 22 L18 10 L25 22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="18" cy="10" r="3" fill="currentColor"/>
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 8 Q28 6 30 14 Q24 12 20 16 Q16 12 10 14 Q12 6 20 8Z" fill="currentColor" opacity="0.9"/>
+            <path d="M20 16 L20 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 28 Q16 24 20 28 Q24 24 28 28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
           </svg>
         </span>
-        BalanceAI
+        Balance AI
       </a>
       <div class="nav-links" id="nav-links">
         <a href="#features">Features</a>
@@ -103,11 +138,11 @@
           AI-Powered Wellness
         </div>
         <h1 data-animate="fade-up" data-delay="100">
-          Find Your<br>
-          <span class="gradient-text">Perfect Balance</span><br>
-          with AI
+          Meet Your<br>
+          <span class="gradient-text">Wellness Buddy</span><br>
+          Powered by AI
         </h1>
-        <p class="hero-description" data-animate="fade-up" data-delay="200">BalanceAI uses advanced artificial intelligence to help you achieve harmony in mind, body, and productivity. Your personal AI companion that adapts to your unique rhythm.</p>
+        <p class="hero-description" data-animate="fade-up" data-delay="200">Balance AI is your friendly wellness companion that helps you find harmony in mind, body, and daily life. A caring buddy that learns your rhythm and gently guides you toward balance.</p>
         <div class="hero-actions" data-animate="fade-up" data-delay="300">
           <a href="#cta" class="btn btn-primary btn-glow">
             Start Free Trial
@@ -129,8 +164,8 @@
             </div>
             <div class="phone-score">
               <svg class="score-ring" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(108,92,231,0.15)" stroke-width="8"/>
-                <circle class="score-ring-fill" cx="60" cy="60" r="50" fill="none" stroke="#6C5CE7" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="31" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(56,178,172,0.15)" stroke-width="8"/>
+                <circle class="score-ring-fill" cx="60" cy="60" r="50" fill="none" stroke="#38B2AC" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="31" stroke-linecap="round" transform="rotate(-90 60 60)"/>
               </svg>
               <div class="score-inner">
                 <span class="score-number" id="score-counter">0</span>
@@ -241,7 +276,7 @@
               <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
               <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
               <div class="orbit-center">
-                <svg viewBox="0 0 48 48" fill="none" stroke="#6C5CE7" stroke-width="2">
+                <svg viewBox="0 0 48 48" fill="none" stroke="#38B2AC" stroke-width="2">
                   <circle cx="24" cy="24" r="20"/>
                   <path d="M24 14v10l7 7" stroke-linecap="round"/>
                 </svg>
@@ -303,7 +338,7 @@
             <p>Set meaningful goals and let AI break them into achievable daily micro-tasks aligned with your energy.</p>
           </div>
           <div class="feature-card" data-animate="fade-up" data-delay="400">
-            <div class="feature-icon-wrap" style="--accent: #A29BFE;">
+            <div class="feature-icon-wrap" style="--accent: #81E6D9;">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 36V24M20 36V18M28 36V22M36 36V12"/>
                 <path d="M4 40h40"/>
@@ -329,7 +364,7 @@
         <div class="timeline-line"></div>
         <div class="step-row" data-animate="fade-up">
           <div class="step-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="#6C5CE7" stroke-width="2"><circle cx="24" cy="24" r="20"/><path d="M18 24l4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none" stroke="#38B2AC" stroke-width="2"><circle cx="24" cy="24" r="20"/><path d="M18 24l4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div class="step-body">
             <span class="step-num">01</span>
@@ -339,17 +374,17 @@
         </div>
         <div class="step-row" data-animate="fade-up" data-delay="150">
           <div class="step-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="#6C5CE7" stroke-width="2"><rect x="8" y="8" width="32" height="32" rx="6"/><path d="M16 20h16M16 28h10" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none" stroke="#38B2AC" stroke-width="2"><rect x="8" y="8" width="32" height="32" rx="6"/><path d="M16 20h16M16 28h10" stroke-linecap="round"/></svg>
           </div>
           <div class="step-body">
             <span class="step-num">02</span>
             <h3>AI Creates Your Plan</h3>
-            <p>Within seconds, BalanceAI generates a dynamic daily plan that adapts to your schedule, energy levels, and evolving needs. It gets smarter every day.</p>
+            <p>Within seconds, Balance AI generates a dynamic daily plan that adapts to your schedule, energy levels, and evolving needs. It gets smarter every day.</p>
           </div>
         </div>
         <div class="step-row" data-animate="fade-up" data-delay="300">
           <div class="step-icon">
-            <svg viewBox="0 0 48 48" fill="none" stroke="#6C5CE7" stroke-width="2"><path d="M24 4l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/></svg>
+            <svg viewBox="0 0 48 48" fill="none" stroke="#38B2AC" stroke-width="2"><path d="M24 4l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/></svg>
           </div>
           <div class="step-body">
             <span class="step-num">03</span>
@@ -374,9 +409,9 @@
           <div class="tc-top">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
-          <blockquote>"BalanceAI completely transformed my morning routine. I went from chaotic to calm in just two weeks. The AI suggestions are scarily accurate."</blockquote>
+          <blockquote>"Balance AI completely transformed my morning routine. I went from chaotic to calm in just two weeks. The AI suggestions are scarily accurate."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar" style="--bg: linear-gradient(135deg, #6C5CE7, #A29BFE);">SC</div>
+            <div class="author-avatar" style="--bg: linear-gradient(135deg, #38B2AC, #81E6D9);">SC</div>
             <div>
               <strong>Sarah Chen</strong>
               <span>Product Designer at Figma</span>
@@ -387,7 +422,7 @@
           <div class="tc-top">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           </div>
-          <blockquote>"As a founder, I was burning out fast. BalanceAI helped me see patterns I was blind to and build sustainable habits. Absolute game changer for my mental health."</blockquote>
+          <blockquote>"As a founder, I was burning out fast. Balance AI helped me see patterns I was blind to and build sustainable habits. Absolute game changer for my mental health."</blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" style="--bg: linear-gradient(135deg, #00B894, #55EFC4);">MJ</div>
             <div>
@@ -483,7 +518,7 @@
     <div class="container">
       <div class="cta-content" data-animate="fade-up">
         <h2>Ready to Find Your <span class="gradient-text">Balance</span>?</h2>
-        <p>Join 50,000+ people who have transformed their lives with BalanceAI. Start your free trial today — no credit card required.</p>
+        <p>Join 50,000+ people who have transformed their lives with Balance AI. Start your free trial today — no credit card required.</p>
         <form class="cta-form" id="cta-form">
           <div class="input-group">
             <input type="email" placeholder="Enter your email address" required aria-label="Email address">
@@ -505,15 +540,16 @@
         <div class="footer-brand">
           <a href="#" class="nav-logo">
             <span class="logo-icon">
-              <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/>
-                <path d="M11 22 L18 10 L25 22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="18" cy="10" r="3" fill="currentColor"/>
+              <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M20 8 Q28 6 30 14 Q24 12 20 16 Q16 12 10 14 Q12 6 20 8Z" fill="currentColor" opacity="0.9"/>
+                <path d="M20 16 L20 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 28 Q16 24 20 28 Q24 24 28 28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
               </svg>
             </span>
-            BalanceAI
+            Balance AI
           </a>
-          <p>AI-powered wellness for a more balanced life. Built with care for people who care about themselves.</p>
+          <p>Your friendly AI wellness buddy. Built with care to help you find balance in mind, body, and life.</p>
           <div class="footer-social">
             <a href="#" aria-label="Twitter">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -549,7 +585,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 BalanceAI. All rights reserved.</p>
+        <p>&copy; 2026 Balance AI. All rights reserved.</p>
       </div>
     </div>
   </footer>

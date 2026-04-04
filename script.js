@@ -28,7 +28,7 @@
           dx: (Math.random() - 0.5) * 0.4,
           dy: (Math.random() - 0.5) * 0.3,
           opacity: Math.random() * 0.5 + 0.1,
-          color: ['rgba(108,92,231,', 'rgba(162,155,254,', 'rgba(253,121,168,', 'rgba(0,184,148,'][Math.floor(Math.random() * 4)]
+          color: ['rgba(56,178,172,', 'rgba(129,230,217,', 'rgba(72,187,120,', 'rgba(154,230,180,'][Math.floor(Math.random() * 4)]
         });
       }
     }
@@ -57,7 +57,7 @@
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(108,92,231,' + (0.06 * (1 - dist / 120)) + ')';
+            ctx.strokeStyle = 'rgba(56,178,172,' + (0.06 * (1 - dist / 120)) + ')';
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -326,7 +326,7 @@
       const btn = ctaForm.querySelector('button');
       const originalHTML = btn.innerHTML;
       btn.innerHTML = 'Welcome aboard! &#x1F389;';
-      btn.style.background = 'linear-gradient(135deg, #00B894, #55EFC4)';
+      btn.style.background = 'linear-gradient(135deg, #48BB78, #9AE6B4)';
 
       showSpeech('Yay, you joined! 🎉', 4000);
       character.className = 'character excited sparkle';
