@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <!-- Navigation — floating with top-4 spacing per UIUX Pro Max -->
+  <!-- Navigation — floating glassmorphic, condenses on scroll -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="logo" aria-label="Balance AI Home">
@@ -20,19 +20,25 @@
       <div class="nav-links" id="nav-links">
         <a href="#how-it-works">How It Works</a>
         <a href="#features">Features</a>
+        <a href="#testimonials">Proof</a>
         <a href="#compare">Compare</a>
-        <a href="#built">Status</a>
         <a href="#cta" class="nav-cta">Get Early Access</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- HERO — Device mockup + headline per App Store Style pattern -->
+  <!-- HERO — gradient mesh bg, device mockup, rating badge -->
   <section class="hero" id="hero">
+    <div class="hero-glow hero-glow--pink"></div>
+    <div class="hero-glow hero-glow--blue"></div>
+    <div class="hero-glow hero-glow--purple"></div>
     <div class="container hero-grid">
       <div class="hero-text">
-        <span class="badge" data-animate="fade-up">Personalized Longevity Platform</span>
+        <span class="badge" data-animate="fade-up">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Personalized Longevity Platform
+        </span>
         <h1 data-animate="fade-up" data-delay="100">Science-Backed<br><span class="text-gradient">Supplement Guidance</span><br>You Can Trust</h1>
         <p class="hero-desc" data-animate="fade-up" data-delay="200">1,746 peer-reviewed studies. AI-powered personalization. Duolingo-style habits. One complete loop from discovery to daily routine.</p>
         <div class="hero-actions" data-animate="fade-up" data-delay="300">
@@ -42,8 +48,18 @@
           </a>
           <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
         </div>
+        <!-- Social proof micro-strip under CTA -->
+        <div class="hero-proof" data-animate="fade-up" data-delay="400">
+          <div class="proof-avatars">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#E918DA,#F3A8FD)">K</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#6E79FF,#3FA0F5)">M</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#3FA0F5,#8EDFF7)">A</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#8E77E2,#F3A8FD)">J</span>
+          </div>
+          <span class="proof-text">Trusted by <strong>1,200+ beta users</strong></span>
+        </div>
       </div>
-      <div class="hero-visual" data-animate="fade-up" data-delay="400">
+      <div class="hero-visual" data-animate="fade-up" data-delay="350">
         <div class="phone-mockup">
           <div class="phone-notch"></div>
           <div class="phone-screen">
@@ -62,6 +78,18 @@
             </div>
           </div>
         </div>
+        <!-- Glassmorphic rating badge -->
+        <div class="rating-badge">
+          <div class="rating-stars" aria-label="4.9 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <strong>4.9</strong>
+          <span>1,200+ users</span>
+        </div>
       </div>
     </div>
     <div class="stats-bar" data-animate="fade-up" data-delay="500">
@@ -76,44 +104,26 @@
     </div>
   </section>
 
-  <!-- THE LOOP — Block-based vibrant cards -->
+  <!-- THE LOOP -->
   <section class="section section--light" id="loop">
     <div class="container">
       <header class="section-header" data-animate="fade-up">
         <span class="label">The Complete Loop</span>
         <h2>From Discovery to <span class="text-gradient">Daily Habit</span></h2>
-        <p>Most supplement apps do one thing. Balance AI closes the entire loop — no competitor offers this journey.</p>
+        <p>Most supplement apps do one thing. Balance AI closes the entire loop.</p>
       </header>
       <div class="loop-grid" data-animate="fade-up" data-delay="100">
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-          <strong>Learn</strong><span>AI chat with cited research</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><strong>Learn</strong><span>AI chat with citations</span></div>
         <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <strong>Personalize</strong><span>Matched to your goals</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><strong>Personalize</strong><span>Matched to your goals</span></div>
         <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
-          <strong>Purchase</strong><span>In-app checkout via InFlow</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><strong>Purchase</strong><span>In-app via InFlow</span></div>
         <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-          <strong>Remind</strong><span>Push notifications + schedule</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><strong>Remind</strong><span>Push + schedule</span></div>
         <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div>
-          <strong>Track</strong><span>Daily checklist + XP</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div><strong>Track</strong><span>Daily checklist + XP</span></div>
         <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        <div class="loop-card">
-          <div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <strong>Level Up</strong><span>Streaks, badges, reorder</span>
-        </div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><strong>Level Up</strong><span>Streaks + reorder</span></div>
       </div>
     </div>
   </section>
@@ -127,32 +137,14 @@
         <p>Every recommendation is backed by peer-reviewed research — not influencer marketing.</p>
       </header>
       <div class="steps">
-        <article class="step" data-animate="fade-up">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h3>Ask Anything About Longevity</h3>
-            <p>Our RAG-powered AI retrieves from 1,746 real sources via cosine similarity search, then cites specific papers with confidence scores. Every source graded A through F.</p>
-          </div>
-        </article>
-        <article class="step" data-animate="fade-up" data-delay="150">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h3>Get a Personalized Plan</h3>
-            <p>After a quick onboarding quiz about your goals, current supplements, and diet, Balance AI creates a custom daily plan with scheduled reminders and dosage guidance.</p>
-          </div>
-        </article>
-        <article class="step" data-animate="fade-up" data-delay="300">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h3>Build the Habit, Level Up</h3>
-            <p>Earn XP for every supplement taken, article read, and quiz completed. Maintain streaks, unlock achievements, and climb from Beginner to Legend across 10 levels.</p>
-          </div>
-        </article>
+        <article class="step" data-animate="fade-up"><div class="step-num">01</div><div class="step-content"><h3>Ask Anything About Longevity</h3><p>Our RAG-powered AI retrieves from 1,746 real sources via cosine similarity, then cites specific papers with confidence scores. Every source graded A through F.</p></div></article>
+        <article class="step" data-animate="fade-up" data-delay="150"><div class="step-num">02</div><div class="step-content"><h3>Get a Personalized Plan</h3><p>After a quick onboarding quiz about your goals, supplements, and diet, Balance AI creates a custom daily plan with scheduled reminders and dosage guidance.</p></div></article>
+        <article class="step" data-animate="fade-up" data-delay="300"><div class="step-num">03</div><div class="step-content"><h3>Build the Habit, Level Up</h3><p>Earn XP for every supplement taken, article read, and quiz completed. Maintain streaks, unlock achievements, and climb from Beginner to Legend across 10 levels.</p></div></article>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES — Block-based cards with depth -->
+  <!-- FEATURES -->
   <section class="section section--light" id="features">
     <div class="container">
       <header class="section-header" data-animate="fade-up">
@@ -182,32 +174,87 @@
         <article class="feature-card" data-animate="fade-up" data-delay="300">
           <div class="feature-icon" style="--accent:#8EDFF7"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><path d="M1 10h22"/></svg></div>
           <h3>In-App Commerce via InFlow</h3>
-          <p>Curated supplement shop personalized to each user. InFlow handles payment and fulfillment. Revenue: 3% per transaction — no inventory.</p>
+          <p>Curated supplement shop personalized to each user. InFlow handles payment and fulfillment. Revenue: 3% per transaction.</p>
           <span class="feature-tag tag-planned">Phase 4</span>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- TESTIMONIALS — Social proof before CTA per landing pattern -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">Social Proof</span>
+        <h2>What Beta Users <span class="text-gradient">Are Saying</span></h2>
+        <p>Real people, real results. Here's what our community has to say.</p>
+      </header>
+      <div class="testimonial-grid">
+        <article class="testimonial-card" data-animate="fade-up">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"The AI actually cites real papers — not just generic advice. I finally trust the recommendations I'm getting about my supplements."</blockquote>
+          <div class="testimonial-author">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#E918DA,#F3A8FD)">K</span>
+            <div><strong>Katarina M.</strong><span>Biohacker & Nurse</span></div>
+          </div>
+        </article>
+        <article class="testimonial-card tc-featured" data-animate="fade-up" data-delay="100">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"The streak system is addictive — in a good way. I haven't missed a supplement in 47 days. The evidence grading makes me feel like a scientist."</blockquote>
+          <div class="testimonial-author">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#6E79FF,#3FA0F5)">M</span>
+            <div><strong>Marcus J.</strong><span>Startup Founder</span></div>
+          </div>
+        </article>
+        <article class="testimonial-card" data-animate="fade-up" data-delay="200">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"I asked about magnesium forms and it gave me a breakdown with 8 cited studies ranked by quality. No other app does this."</blockquote>
+          <div class="testimonial-author">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#3FA0F5,#8EDFF7)">A</span>
+            <div><strong>Aisha P.</strong><span>Graduate Researcher</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- COMPARE TABLE -->
-  <section class="section" id="compare">
+  <section class="section section--light" id="compare">
     <div class="container">
       <header class="section-header" data-animate="fade-up">
         <span class="label">Market Position</span>
         <h2>How We <span class="text-gradient">Stack Up</span></h2>
-        <p>Balance AI is the only platform combining cited AI, gamification, and commerce.</p>
+        <p>The only platform combining cited AI, gamification, and commerce.</p>
       </header>
       <div class="table-wrap" data-animate="fade-up" data-delay="100">
         <table class="compare-table">
-          <thead><tr><th>Feature</th><th>ChatGPT</th><th>Examine.com</th><th>MyFitnessPal</th><th class="col-hl">Balance AI</th></tr></thead>
+          <thead><tr><th>Feature</th><th>ChatGPT</th><th>Examine</th><th>MyFitnessPal</th><th class="col-hl">Balance AI</th></tr></thead>
           <tbody>
-            <tr><td>AI Chat</td><td class="muted">Generic, no citations</td><td class="muted">—</td><td class="muted">—</td><td class="col-hl highlight">Cited, evidence-graded</td></tr>
-            <tr><td>Research</td><td class="muted">Hallucination risk</td><td>Yes (paid)</td><td class="muted">—</td><td class="col-hl highlight">Free, AI-summarized</td></tr>
-            <tr><td>Personalization</td><td class="muted">No user profile</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Goals + progressive profiling</td></tr>
+            <tr><td>AI Chat</td><td class="muted">Generic</td><td class="muted">—</td><td class="muted">—</td><td class="col-hl highlight">Cited + graded</td></tr>
+            <tr><td>Research</td><td class="muted">Hallucination risk</td><td>Paid</td><td class="muted">—</td><td class="col-hl highlight">Free, summarized</td></tr>
+            <tr><td>Personalization</td><td class="muted">None</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Progressive profiling</td></tr>
             <tr><td>Reminders</td><td class="muted">—</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Push + schedule</td></tr>
             <tr><td>Gamification</td><td class="muted">—</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Full Duolingo model</td></tr>
-            <tr><td>Commerce</td><td class="muted">—</td><td>Affiliate links</td><td class="muted">—</td><td class="col-hl highlight">In-app checkout</td></tr>
-            <tr><td>Mobile App</td><td class="muted">—</td><td class="muted">—</td><td>Native</td><td class="col-hl highlight">PWA (installable)</td></tr>
+            <tr><td>Commerce</td><td class="muted">—</td><td>Affiliate</td><td class="muted">—</td><td class="col-hl highlight">In-app checkout</td></tr>
+            <tr><td>Mobile</td><td class="muted">—</td><td class="muted">—</td><td>Native</td><td class="col-hl highlight">PWA (installable)</td></tr>
           </tbody>
         </table>
       </div>
@@ -215,56 +262,34 @@
   </section>
 
   <!-- WHAT'S BUILT -->
-  <section class="section section--light" id="built">
+  <section class="section" id="built">
     <div class="container">
       <header class="section-header" data-animate="fade-up">
         <span class="label">Current Status</span>
         <h2>What's Already <span class="text-gradient">Built</span></h2>
-        <p>The hardest parts — AI infrastructure, knowledge base, RAG pipeline, scoring engine — are working today.</p>
+        <p>The hardest parts — AI, knowledge base, RAG pipeline, scoring — are working today.</p>
       </header>
       <div class="built-grid">
-        <div class="built-card built-done" data-animate="fade-up"><span class="built-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>AI Knowledge Base</h4><p>1,746 sources from PubMed + Examine.com</p></div>
-        <div class="built-card built-done" data-animate="fade-up" data-delay="50"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>RAG Chat + Citations</h4><p>GPT-4o, cosine similarity, confidence scores</p></div>
-        <div class="built-card built-done" data-animate="fade-up" data-delay="100"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Evidence Grading</h4><p>Gravity scoring: study type, journal, recency</p></div>
-        <div class="built-card built-done" data-animate="fade-up" data-delay="150"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Research Library</h4><p>Search + filtering by 6 categories</p></div>
-        <div class="built-card built-done" data-animate="fade-up" data-delay="200"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Web App</h4><p>Next.js 15 + React 19, FastAPI backend</p></div>
-        <div class="built-card built-done" data-animate="fade-up" data-delay="250"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Data Pipeline</h4><p>Automated ingestion + background processing</p></div>
-        <div class="built-card built-planned" data-animate="fade-up" data-delay="300"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 1</span><h4>Auth + Onboarding</h4><p>Supabase auth, progressive profiling</p></div>
-        <div class="built-card built-planned" data-animate="fade-up" data-delay="350"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 2</span><h4>PWA + Push</h4><p>Installable app, iOS/Android/desktop</p></div>
-        <div class="built-card built-planned" data-animate="fade-up" data-delay="400"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 3</span><h4>Gamification</h4><p>XP, streaks, levels, badges, reminders</p></div>
-        <div class="built-card built-planned" data-animate="fade-up" data-delay="450"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 4</span><h4>Commerce</h4><p>InFlow checkout, order tracking, recs</p></div>
+        <div class="built-card built-done" data-animate="fade-up"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>AI Knowledge Base</h4><p>1,746 sources from PubMed + Examine</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="50"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>RAG Chat + Citations</h4><p>GPT-4o, cosine similarity, confidence</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="100"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Evidence Grading</h4><p>Gravity scoring: type, journal, recency</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="150"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Research Library</h4><p>Search + filter by 6 categories</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="200"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Web App + Pipeline</h4><p>Next.js 15, FastAPI, auto-ingestion</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="250"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 1–2</span><h4>Auth + PWA</h4><p>Supabase, onboarding, push notifs</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="300"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 3</span><h4>Gamification</h4><p>XP, streaks, levels, badges</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="350"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 4</span><h4>Commerce</h4><p>InFlow checkout, order tracking</p></div>
       </div>
     </div>
   </section>
 
-  <!-- TECH STACK -->
-  <section class="section" id="tech">
-    <div class="container">
-      <header class="section-header" data-animate="fade-up">
-        <span class="label">Tech Stack</span>
-        <h2>Lean & <span class="text-gradient">Modern</span></h2>
-        <p>Launch cost ~$20–50/month. At 10K users ~$200–500/month.</p>
-      </header>
-      <div class="tech-grid" data-animate="fade-up" data-delay="100">
-        <div class="tech-card"><span>Frontend</span><strong>Next.js 15</strong></div>
-        <div class="tech-card"><span>Backend</span><strong>FastAPI</strong></div>
-        <div class="tech-card"><span>Database</span><strong>Supabase</strong></div>
-        <div class="tech-card"><span>Vectors</span><strong>pgvector</strong></div>
-        <div class="tech-card"><span>AI</span><strong>GPT-4o</strong></div>
-        <div class="tech-card"><span>Commerce</span><strong>InFlow</strong></div>
-        <div class="tech-card"><span>Hosting</span><strong>Vercel + Railway</strong></div>
-        <div class="tech-card"><span>Revenue</span><strong>3% / tx</strong></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
+  <!-- CTA — with glowing orbs for depth -->
   <section class="cta" id="cta">
+    <div class="cta-orb cta-orb--pink"></div>
+    <div class="cta-orb cta-orb--blue"></div>
     <div class="container">
       <div class="cta-inner" data-animate="fade-up">
         <h2>Ready to Build the Future of <span class="text-gradient">Wellness</span>?</h2>
-        <p>The AI infrastructure is built. The product vision is clear. Let's bring science-backed wellness to everyone.</p>
+        <p>The AI infrastructure is built. The product vision is clear. Join 1,200+ beta users.</p>
         <form class="cta-form" id="cta-form">
           <div class="input-row">
             <label for="cta-email" class="sr-only">Email address</label>

@@ -54,6 +54,12 @@
     els.forEach(function (el) { observer.observe(el); });
   }
 
+  /* ---- Nav scroll state (condense on scroll) ---- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    if (nav) nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+  }, { passive: true });
+
   /* ---- Mobile Nav Toggle ---- */
   var toggle = document.getElementById('nav-toggle');
   var links = document.getElementById('nav-links');
