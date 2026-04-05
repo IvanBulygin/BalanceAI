@@ -81,7 +81,7 @@
       e.preventDefault();
       var btn = form.querySelector('button');
       btn.textContent = 'Welcome aboard!';
-      btn.style.background = '#10B981';
+      btn.style.background = 'linear-gradient(135deg, #E918DA, #6E79FF)';
       showCharSpeech('Welcome! 🎉', 4000);
       setCharAnim(['excited', 'sparkle']);
       setTimeout(function () { btn.textContent = 'Get Early Access'; btn.style.background = ''; }, 3500);
