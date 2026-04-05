@@ -82,93 +82,15 @@
       var btn = form.querySelector('button');
       btn.textContent = 'Welcome aboard!';
       btn.style.background = 'linear-gradient(135deg, #E918DA, #6E79FF)';
-      showCharSpeech('Welcome! 🎉', 4000);
-      setCharAnim(['excited', 'sparkle']);
       setTimeout(function () { btn.textContent = 'Get Early Access'; btn.style.background = ''; }, 3500);
     });
   }
 
-  /* ---- Character ---- single idle animation (UIUX Pro Max: max 1-2 per view) */
-  var character = document.getElementById('character');
-  var charSpeech = document.getElementById('character-speech');
-  var speechTimer = null;
-
-  function setCharAnim(classes) {
-    if (prefersReducedMotion || !character) return;
-    character.className = 'character';
-    requestAnimationFrame(function () { classes.forEach(function (c) { character.classList.add(c); }); });
-  }
-
-  function showCharSpeech(text, ms) {
-    if (!charSpeech) return;
-    if (speechTimer) clearTimeout(speechTimer);
-    charSpeech.textContent = text;
-    charSpeech.classList.add('visible');
-    speechTimer = setTimeout(function () { charSpeech.classList.remove('visible'); }, ms || 3000);
-  }
-
-  /* Eye tracking */
-  var mx = 0, my = 0;
-  document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
-
-  function updateEyes() {
-    if (!character || prefersReducedMotion) return;
-    var r = character.getBoundingClientRect();
-    var cx = r.left + r.width / 2, cy = r.top + r.height * 0.35;
-    var dx = mx - cx, dy = my - cy, d = Math.sqrt(dx * dx + dy * dy);
-    var max = 2.5;
-    var ex = d > 0 ? (dx / d) * Math.min(max, d / 40) : 0;
-    var ey = d > 0 ? (dy / d) * Math.min(max, d / 40) : 0;
-    character.querySelectorAll('.char-pupil').forEach(function (p) { p.setAttribute('transform', 'translate(' + ex + ',' + ey + ')'); });
-    requestAnimationFrame(updateEyes);
-  }
-
-  /* Section-based character state */
-  var sectionMap = {
-    'hero': { cls: ['idle', 'waving'], msg: 'Hey! I know 1,746 studies!' },
-    'loop': { cls: ['idle'], msg: 'The complete loop!' },
-    'how-it-works': { cls: ['idle'], msg: 'All backed by science...' },
-    'features': { cls: ['idle', 'sparkle'], msg: 'No one else has all this!' },
-    'compare': { cls: ['idle'], msg: 'Check the competition...' },
-    'built': { cls: ['idle'], msg: 'So much already works!' },
-    'tech': { cls: ['idle'], msg: 'Lean stack, big results!' },
-    'cta': { cls: ['excited', 'sparkle'], msg: "Let's build this!" }
-  };
-  var sectionIds = Object.keys(sectionMap);
-  var currentSec = '';
-
-  function detectSection() {
-    var scrollY = window.scrollY + window.innerHeight * 0.5;
-    for (var i = sectionIds.length - 1; i >= 0; i--) {
-      var el = document.getElementById(sectionIds[i]);
-      if (el && el.offsetTop <= scrollY) return sectionIds[i];
-    }
-    return sectionIds[0];
-  }
-
-  function onScroll() {
-    var sec = detectSection();
-    if (sec !== currentSec) {
-      currentSec = sec;
-      var cfg = sectionMap[sec];
-      if (cfg) { setCharAnim(cfg.cls); showCharSpeech(cfg.msg, 3000); }
-    }
-  }
-
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (!ticking) { requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
-  }, { passive: true });
 
   /* ---- Init ---- */
   function init() {
     initScrollAnimations();
     initCounters();
-    if (!prefersReducedMotion) {
-      setCharAnim(['idle', 'waving']);
-      showCharSpeech('Hey! I know 1,746 studies!', 3500);
-      updateEyes();
-    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

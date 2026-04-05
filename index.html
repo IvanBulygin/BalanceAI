@@ -11,30 +11,6 @@
 </head>
 <body>
 
-  <!-- Character (kept from Figma brand, single hero animation per UIUX Pro Max rule) -->
-  <div id="character" class="character" aria-hidden="true">
-    <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" class="character-svg">
-      <defs>
-        <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%"><stop offset="0%" stop-color="#E918DA"/><stop offset="50%" stop-color="#F3A8FD"/><stop offset="100%" stop-color="#FF6BF0"/></linearGradient>
-        <linearGradient id="bodyBlue" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4DA3F7"/><stop offset="100%" stop-color="#3B8DE8"/></linearGradient>
-        <linearGradient id="armBlue" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5AADFF"/><stop offset="100%" stop-color="#3A8EE6"/></linearGradient>
-        <linearGradient id="legPurple" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9B7AEA"/><stop offset="100%" stop-color="#7C5CE7"/></linearGradient>
-        <linearGradient id="legPink" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E86BCD"/><stop offset="100%" stop-color="#D94FC0"/></linearGradient>
-      </defs>
-      <g class="char-head"><path class="char-flame" d="M80 22 C95 22 108 35 110 52 C112 65 105 78 95 82 C90 84 85 85 80 85 C75 85 70 84 65 82 C55 78 48 65 50 52 C52 35 65 22 80 22Z" fill="url(#flameGrad)"/><path class="char-flame-tip" d="M68 30 Q62 10 70 18 Q72 22 68 30Z" fill="#FF8EF5" opacity="0.8"/><path class="char-flame-tip" d="M80 25 Q80 4 84 12 Q85 18 80 25Z" fill="#FFA8F8" opacity="0.7"/><path class="char-flame-tip" d="M92 30 Q98 12 93 20 Q91 25 92 30Z" fill="#FF8EF5" opacity="0.8"/></g>
-      <g class="char-eye char-eye-left"><ellipse cx="70" cy="58" rx="5" ry="5.5" fill="#1A1A2E"/><ellipse class="char-pupil" cx="71" cy="57" rx="2" ry="2.2" fill="#FFF"/></g>
-      <g class="char-eye char-eye-right"><ellipse cx="90" cy="58" rx="5" ry="5.5" fill="#1A1A2E"/><ellipse class="char-pupil" cx="91" cy="57" rx="2" ry="2.2" fill="#FFF"/></g>
-      <path class="char-mouth" d="M73 70 Q80 77 87 70" stroke="#1A1A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <rect x="62" y="82" width="36" height="44" rx="18" fill="url(#bodyBlue)"/>
-      <g class="char-arm char-arm-left"><path d="M62 92 Q38 80 28 68" stroke="url(#armBlue)" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="26" cy="66" r="10" fill="#FFF" stroke="#E8E8E8" stroke-width="1"/></g>
-      <g class="char-arm char-arm-right"><path d="M98 92 Q122 80 132 68" stroke="url(#armBlue)" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="134" cy="66" r="10" fill="#FFF" stroke="#E8E8E8" stroke-width="1"/></g>
-      <g class="char-leg char-leg-left"><path d="M72 122 Q58 150 48 172" stroke="url(#legPurple)" stroke-width="16" fill="none" stroke-linecap="round"/><ellipse cx="46" cy="176" rx="12" ry="6" fill="#8B6FE0"/></g>
-      <g class="char-leg char-leg-right"><path d="M88 122 Q102 150 112 172" stroke="url(#legPink)" stroke-width="16" fill="none" stroke-linecap="round"/><ellipse cx="114" cy="176" rx="12" ry="6" fill="#D94FC0"/></g>
-      <g class="char-sparkles"><circle cx="20" cy="45" r="2.5" fill="#F3A8FD" opacity="0"/><circle cx="140" cy="50" r="2" fill="#6E79FF" opacity="0"/><circle cx="25" cy="145" r="2" fill="#3FA0F5" opacity="0"/><circle cx="135" cy="140" r="2.5" fill="#FF6BF0" opacity="0"/></g>
-    </svg>
-    <div class="character-speech" id="character-speech"></div>
-  </div>
-
   <!-- Navigation — floating with top-4 spacing per UIUX Pro Max -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
