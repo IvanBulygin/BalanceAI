@@ -10,49 +10,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Noise / grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
   <!-- Floating Character -->
   <div id="character" class="character" aria-hidden="true">
     <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" class="character-svg">
-      <!-- Body -->
       <ellipse class="char-body" cx="60" cy="100" rx="30" ry="40" fill="#6C5CE7"/>
-      <!-- Face -->
       <circle class="char-face" cx="60" cy="55" r="28" fill="#FFEAA7"/>
-      <!-- Left Eye -->
       <g class="char-eye char-eye-left">
         <ellipse cx="50" cy="50" rx="5" ry="6" fill="#2D3436"/>
         <ellipse class="char-pupil" cx="51" cy="49" rx="2" ry="2.5" fill="#FFFFFF"/>
       </g>
-      <!-- Right Eye -->
       <g class="char-eye char-eye-right">
         <ellipse cx="70" cy="50" rx="5" ry="6" fill="#2D3436"/>
         <ellipse class="char-pupil" cx="71" cy="49" rx="2" ry="2.5" fill="#FFFFFF"/>
       </g>
-      <!-- Mouth -->
       <path class="char-mouth" d="M50 65 Q60 75 70 65" stroke="#2D3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- Blush -->
       <ellipse class="char-blush" cx="40" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.6"/>
       <ellipse class="char-blush" cx="80" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.6"/>
-      <!-- Left Arm -->
       <g class="char-arm char-arm-left">
         <path d="M30 90 Q15 80 10 65" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
         <circle cx="10" cy="63" r="5" fill="#FFEAA7"/>
       </g>
-      <!-- Right Arm -->
       <g class="char-arm char-arm-right">
         <path d="M90 90 Q105 80 110 65" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
         <circle cx="110" cy="63" r="5" fill="#FFEAA7"/>
       </g>
-      <!-- Left Leg -->
       <g class="char-leg char-leg-left">
         <path d="M45 135 L40 155" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
         <ellipse cx="38" cy="157" rx="8" ry="4" fill="#A29BFE"/>
       </g>
-      <!-- Right Leg -->
       <g class="char-leg char-leg-right">
         <path d="M75 135 L80 155" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
         <ellipse cx="82" cy="157" rx="8" ry="4" fill="#A29BFE"/>
       </g>
-      <!-- Sparkle effects around character -->
       <g class="char-sparkles">
         <circle cx="15" cy="35" r="2" fill="#FDCB6E" opacity="0"/>
         <circle cx="105" cy="40" r="1.5" fill="#74B9FF" opacity="0"/>
@@ -76,7 +68,7 @@
         </span>
         BalanceAI
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#testimonials">Stories</a>
@@ -91,58 +83,66 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+    <div class="hero-aurora" aria-hidden="true">
+      <div class="aurora aurora-1"></div>
+      <div class="aurora aurora-2"></div>
+      <div class="aurora aurora-3"></div>
     </div>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="container hero-content">
       <div class="hero-text">
-        <div class="hero-badge">AI-Powered Wellness</div>
-        <h1>Find Your <span class="gradient-text">Perfect Balance</span> with AI</h1>
-        <p class="hero-description">BalanceAI uses advanced artificial intelligence to help you achieve harmony in mind, body, and productivity. Your personal AI companion that adapts to your unique rhythm.</p>
-        <div class="hero-actions">
-          <a href="#cta" class="btn btn-primary">
-            Start Free Trial
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          AI-Powered Wellness
+        </div>
+        <h1 class="reveal-text">
+          <span class="reveal-line"><span>Find Your</span></span>
+          <span class="reveal-line"><span class="gradient-text">Perfect Balance</span></span>
+          <span class="reveal-line"><span>with AI</span></span>
+        </h1>
+        <p class="hero-description fade-in-up">BalanceAI uses advanced artificial intelligence to help you achieve harmony in mind, body, and productivity. Your personal AI companion that adapts to your unique rhythm.</p>
+        <div class="hero-actions fade-in-up" style="--delay: 0.2s">
+          <a href="#cta" class="btn btn-primary magnetic">
+            <span>Start Free Trial</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#how-it-works" class="btn btn-secondary">
+          <a href="#how-it-works" class="btn btn-secondary magnetic">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            Watch Demo
+            <span>Watch Demo</span>
           </a>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats fade-in-up" style="--delay: 0.4s">
           <div class="stat">
-            <strong>50K+</strong>
+            <strong data-count="50">0</strong><strong>K+</strong>
             <span>Active Users</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <strong>4.9</strong>
+            <strong data-count="4.9" data-decimals="1">0</strong>
             <span>App Rating</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <strong>89%</strong>
+            <strong data-count="89">0</strong><strong>%</strong>
             <span>Feel Better</span>
           </div>
         </div>
       </div>
       <div class="hero-visual">
         <div class="hero-card-stack">
-          <div class="hero-card hero-card-1">
+          <div class="hero-card hero-card-1 tilt-card">
             <div class="card-icon">&#x1F9E0;</div>
             <span>Mindfulness Score</span>
             <strong>92/100</strong>
             <div class="card-bar"><div class="card-bar-fill" style="width:92%"></div></div>
           </div>
-          <div class="hero-card hero-card-2">
+          <div class="hero-card hero-card-2 tilt-card">
             <div class="card-icon">&#x1F4AA;</div>
             <span>Activity Level</span>
             <strong>High</strong>
             <div class="card-bar"><div class="card-bar-fill" style="width:78%"></div></div>
           </div>
-          <div class="hero-card hero-card-3">
+          <div class="hero-card hero-card-3 tilt-card">
             <div class="card-icon">&#x1F31F;</div>
             <span>Balance Index</span>
             <strong>Excellent</strong>
@@ -152,10 +152,44 @@
       </div>
     </div>
     <div class="scroll-indicator" id="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
       <span>Scroll to explore</span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </section>
+
+  <!-- Marquee social proof -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item">Featured in TechCrunch</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Apple App of the Day</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">50,000+ Happy Users</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">4.9 Star Rating</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Forbes Top AI Apps 2026</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Product Hunt #1</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Featured in TechCrunch</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Apple App of the Day</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">50,000+ Happy Users</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">4.9 Star Rating</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Forbes Top AI Apps 2026</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">Product Hunt #1</span>
+        <span class="marquee-dot"></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Features Section -->
   <section class="features" id="features">
@@ -166,7 +200,7 @@
         <p>Powerful AI tools designed to help you find balance in every aspect of life.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card" data-animate="fade-up">
+        <div class="feature-card tilt-card" data-animate="fade-up">
           <div class="feature-icon" style="--accent: #6C5CE7;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="24" cy="24" r="20"/>
@@ -175,8 +209,9 @@
           </div>
           <h3>Smart Scheduling</h3>
           <p>AI learns your peak hours and optimizes your daily routine for maximum productivity and rest.</p>
+          <div class="feature-card-shine"></div>
         </div>
-        <div class="feature-card" data-animate="fade-up" data-delay="100">
+        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="100">
           <div class="feature-icon" style="--accent: #00B894;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
@@ -186,8 +221,9 @@
           </div>
           <h3>Mood Tracking</h3>
           <p>Advanced sentiment analysis tracks your emotional patterns and suggests personalized improvements.</p>
+          <div class="feature-card-shine"></div>
         </div>
-        <div class="feature-card" data-animate="fade-up" data-delay="200">
+        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="200">
           <div class="feature-icon" style="--accent: #E17055;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M24 44s-16-8-16-22C8 12 14 6 24 14c10-8 16-2 16 8 0 14-16 22-16 22z"/>
@@ -195,8 +231,9 @@
           </div>
           <h3>Wellness Insights</h3>
           <p>Get actionable health recommendations based on your activity, sleep, and stress data.</p>
+          <div class="feature-card-shine"></div>
         </div>
-        <div class="feature-card" data-animate="fade-up" data-delay="300">
+        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="300">
           <div class="feature-icon" style="--accent: #0984E3;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="6" y="10" width="36" height="28" rx="4"/>
@@ -208,8 +245,9 @@
           </div>
           <h3>Focus Mode</h3>
           <p>AI-powered distraction blocker adapts to your work style and helps you enter deep focus states.</p>
+          <div class="feature-card-shine"></div>
         </div>
-        <div class="feature-card" data-animate="fade-up" data-delay="400">
+        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="400">
           <div class="feature-icon" style="--accent: #FDCB6E;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M24 4l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
@@ -217,8 +255,9 @@
           </div>
           <h3>Goal Setting</h3>
           <p>Set meaningful goals and let AI break them into achievable daily micro-tasks aligned with your energy.</p>
+          <div class="feature-card-shine"></div>
         </div>
-        <div class="feature-card" data-animate="fade-up" data-delay="500">
+        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="500">
           <div class="feature-icon" style="--accent: #A29BFE;">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 36V24M20 36V18M28 36V22M36 36V12"/>
@@ -227,6 +266,7 @@
           </div>
           <h3>Progress Analytics</h3>
           <p>Beautiful dashboards show your journey over time with deep insights into what's working for you.</p>
+          <div class="feature-card-shine"></div>
         </div>
       </div>
     </div>
@@ -249,9 +289,11 @@
           </div>
           <div class="step-visual">
             <div class="step-mockup">
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
+              <div class="mockup-header">
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+              </div>
               <div class="mockup-bar" style="width:90%"></div>
               <div class="mockup-bar" style="width:65%"></div>
               <div class="mockup-bar" style="width:80%"></div>
@@ -283,8 +325,14 @@
             <div class="step-mockup balance-mockup">
               <div class="balance-circle">
                 <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#e0e0e0" stroke-width="6"/>
-                  <circle class="balance-progress" cx="50" cy="50" r="40" fill="none" stroke="#6C5CE7" stroke-width="6" stroke-dasharray="251" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(108,92,231,0.15)" stroke-width="6"/>
+                  <circle class="balance-progress" cx="50" cy="50" r="40" fill="none" stroke="url(#progressGrad)" stroke-width="6" stroke-dasharray="251" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                  <defs>
+                    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#6C5CE7"/>
+                      <stop offset="100%" stop-color="#A29BFE"/>
+                    </linearGradient>
+                  </defs>
                 </svg>
                 <span>90%</span>
               </div>
@@ -304,7 +352,8 @@
         <p>Real people, real balance. Here's what our community has to say.</p>
       </div>
       <div class="testimonial-grid">
-        <div class="testimonial-card" data-animate="fade-up">
+        <div class="testimonial-card tilt-card" data-animate="fade-up">
+          <div class="testimonial-quote-icon">"</div>
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"BalanceAI completely transformed my morning routine. I went from chaotic to calm in just two weeks. The AI suggestions are scarily accurate."</p>
           <div class="testimonial-author">
@@ -315,7 +364,8 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+        <div class="testimonial-card tilt-card" data-animate="fade-up" data-delay="100">
+          <div class="testimonial-quote-icon">"</div>
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"As a founder, I was burning out fast. BalanceAI helped me see patterns I was blind to and build sustainable habits. Game changer."</p>
           <div class="testimonial-author">
@@ -326,7 +376,8 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+        <div class="testimonial-card tilt-card" data-animate="fade-up" data-delay="200">
+          <div class="testimonial-quote-icon">"</div>
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"The mood tracking feature is incredible. It caught my stress patterns before I even noticed them. My therapist recommended it!"</p>
           <div class="testimonial-author">
@@ -350,7 +401,7 @@
         <p>Start free, upgrade when you're ready. No hidden fees, ever.</p>
       </div>
       <div class="pricing-grid">
-        <div class="pricing-card" data-animate="fade-up">
+        <div class="pricing-card tilt-card" data-animate="fade-up">
           <div class="pricing-name">Free</div>
           <div class="pricing-price">$0<span>/month</span></div>
           <ul class="pricing-features">
@@ -359,9 +410,9 @@
             <li>3 AI suggestions/day</li>
             <li>Community access</li>
           </ul>
-          <a href="#cta" class="btn btn-secondary btn-block">Get Started</a>
+          <a href="#cta" class="btn btn-secondary btn-block magnetic">Get Started</a>
         </div>
-        <div class="pricing-card pricing-card-featured" data-animate="fade-up" data-delay="100">
+        <div class="pricing-card pricing-card-featured tilt-card" data-animate="fade-up" data-delay="100">
           <div class="pricing-badge">Most Popular</div>
           <div class="pricing-name">Pro</div>
           <div class="pricing-price">$12<span>/month</span></div>
@@ -373,9 +424,9 @@
             <li>Progress analytics</li>
             <li>Priority support</li>
           </ul>
-          <a href="#cta" class="btn btn-primary btn-block">Start Free Trial</a>
+          <a href="#cta" class="btn btn-primary btn-block magnetic">Start Free Trial</a>
         </div>
-        <div class="pricing-card" data-animate="fade-up" data-delay="200">
+        <div class="pricing-card tilt-card" data-animate="fade-up" data-delay="200">
           <div class="pricing-name">Team</div>
           <div class="pricing-price">$29<span>/month</span></div>
           <ul class="pricing-features">
@@ -386,7 +437,7 @@
             <li>Custom integrations</li>
             <li>Dedicated support</li>
           </ul>
-          <a href="#cta" class="btn btn-secondary btn-block">Contact Sales</a>
+          <a href="#cta" class="btn btn-secondary btn-block magnetic">Contact Sales</a>
         </div>
       </div>
     </div>
@@ -394,6 +445,7 @@
 
   <!-- CTA Section -->
   <section class="cta" id="cta">
+    <div class="cta-glow" aria-hidden="true"></div>
     <div class="container">
       <div class="cta-content" data-animate="fade-up">
         <h2>Ready to Find Your <span class="gradient-text">Balance</span>?</h2>
@@ -401,7 +453,7 @@
         <form class="cta-form" id="cta-form">
           <div class="input-group">
             <input type="email" placeholder="Enter your email" required aria-label="Email address">
-            <button type="submit" class="btn btn-primary">Get Started Free</button>
+            <button type="submit" class="btn btn-primary magnetic">Get Started Free</button>
           </div>
         </form>
         <p class="cta-note">Free 14-day trial &middot; No credit card required &middot; Cancel anytime</p>
