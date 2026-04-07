@@ -3,506 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BalanceAI — Find Your Equilibrium</title>
+  <title>Balance AI — Science-Backed Supplement Guidance</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Noise / grain overlay -->
-  <div class="grain-overlay" aria-hidden="true"></div>
 
-  <!-- Floating Character -->
-  <div id="character" class="character" aria-hidden="true">
-    <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" class="character-svg">
-      <ellipse class="char-body" cx="60" cy="100" rx="30" ry="40" fill="#6C5CE7"/>
-      <circle class="char-face" cx="60" cy="55" r="28" fill="#FFEAA7"/>
-      <g class="char-eye char-eye-left">
-        <ellipse cx="50" cy="50" rx="5" ry="6" fill="#2D3436"/>
-        <ellipse class="char-pupil" cx="51" cy="49" rx="2" ry="2.5" fill="#FFFFFF"/>
-      </g>
-      <g class="char-eye char-eye-right">
-        <ellipse cx="70" cy="50" rx="5" ry="6" fill="#2D3436"/>
-        <ellipse class="char-pupil" cx="71" cy="49" rx="2" ry="2.5" fill="#FFFFFF"/>
-      </g>
-      <path class="char-mouth" d="M50 65 Q60 75 70 65" stroke="#2D3436" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <ellipse class="char-blush" cx="40" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.6"/>
-      <ellipse class="char-blush" cx="80" cy="60" rx="6" ry="3.5" fill="#FAB1A0" opacity="0.6"/>
-      <g class="char-arm char-arm-left">
-        <path d="M30 90 Q15 80 10 65" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="10" cy="63" r="5" fill="#FFEAA7"/>
-      </g>
-      <g class="char-arm char-arm-right">
-        <path d="M90 90 Q105 80 110 65" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="110" cy="63" r="5" fill="#FFEAA7"/>
-      </g>
-      <g class="char-leg char-leg-left">
-        <path d="M45 135 L40 155" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <ellipse cx="38" cy="157" rx="8" ry="4" fill="#A29BFE"/>
-      </g>
-      <g class="char-leg char-leg-right">
-        <path d="M75 135 L80 155" stroke="#6C5CE7" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <ellipse cx="82" cy="157" rx="8" ry="4" fill="#A29BFE"/>
-      </g>
-      <g class="char-sparkles">
-        <circle cx="15" cy="35" r="2" fill="#FDCB6E" opacity="0"/>
-        <circle cx="105" cy="40" r="1.5" fill="#74B9FF" opacity="0"/>
-        <circle cx="20" cy="110" r="1.8" fill="#55EFC4" opacity="0"/>
-        <circle cx="100" cy="105" r="2.2" fill="#FF7675" opacity="0"/>
-      </g>
-    </svg>
-    <div class="character-speech" id="character-speech"></div>
-  </div>
-
-  <!-- Navigation -->
+  <!-- Navigation — floating glassmorphic, condenses on scroll -->
   <nav class="nav" id="nav">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="logo-icon">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M10 20 L16 10 L22 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="16" cy="10" r="3" fill="currentColor"/>
-          </svg>
-        </span>
-        BalanceAI
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="Balance AI Home">
+        <span class="logo-wordmark">B A L<span class="logo-a">&Lambda;</span>N C E</span><sup class="logo-sup">AI</sup>
       </a>
       <div class="nav-links" id="nav-links">
-        <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
-        <a href="#testimonials">Stories</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#cta" class="nav-cta">Get Started</a>
+        <a href="#features">Features</a>
+        <a href="#testimonials">Proof</a>
+        <a href="#compare">Compare</a>
+        <a href="#cta" class="nav-cta">Get Early Access</a>
       </div>
-      <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO — gradient mesh bg, device mockup, rating badge -->
   <section class="hero" id="hero">
-    <div class="hero-aurora" aria-hidden="true">
-      <div class="aurora aurora-1"></div>
-      <div class="aurora aurora-2"></div>
-      <div class="aurora aurora-3"></div>
-    </div>
-    <div class="hero-grid-bg" aria-hidden="true"></div>
-    <div class="container hero-content">
+    <div class="hero-glow hero-glow--pink"></div>
+    <div class="hero-glow hero-glow--blue"></div>
+    <div class="hero-glow hero-glow--purple"></div>
+    <div class="container hero-grid">
       <div class="hero-text">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          AI-Powered Wellness
-        </div>
-        <h1 class="reveal-text">
-          <span class="reveal-line"><span>Find Your</span></span>
-          <span class="reveal-line"><span class="gradient-text">Perfect Balance</span></span>
-          <span class="reveal-line"><span>with AI</span></span>
-        </h1>
-        <p class="hero-description fade-in-up">BalanceAI uses advanced artificial intelligence to help you achieve harmony in mind, body, and productivity. Your personal AI companion that adapts to your unique rhythm.</p>
-        <div class="hero-actions fade-in-up" style="--delay: 0.2s">
-          <a href="#cta" class="btn btn-primary magnetic">
-            <span>Start Free Trial</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span class="badge" data-animate="fade-up">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Personalized Longevity Platform
+        </span>
+        <h1 data-animate="fade-up" data-delay="100">Science-Backed<br><span class="text-gradient">Supplement Guidance</span><br>You Can Trust</h1>
+        <p class="hero-desc" data-animate="fade-up" data-delay="200">1,746 peer-reviewed studies. AI-powered personalization. Duolingo-style habits. One complete loop from discovery to daily routine.</p>
+        <div class="hero-actions" data-animate="fade-up" data-delay="300">
+          <a href="#cta" class="btn btn-primary">
+            Get Early Access
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="#how-it-works" class="btn btn-secondary magnetic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Watch Demo</span>
-          </a>
+          <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
         </div>
-        <div class="hero-stats fade-in-up" style="--delay: 0.4s">
-          <div class="stat">
-            <strong data-count="50">0</strong><strong>K+</strong>
-            <span>Active Users</span>
+        <!-- Social proof micro-strip under CTA -->
+        <div class="hero-proof" data-animate="fade-up" data-delay="400">
+          <div class="proof-avatars">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#E918DA,#F3A8FD)">K</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#6E79FF,#3FA0F5)">M</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#3FA0F5,#8EDFF7)">A</span>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#8E77E2,#F3A8FD)">J</span>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <strong data-count="4.9" data-decimals="1">0</strong>
-            <span>App Rating</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <strong data-count="89">0</strong><strong>%</strong>
-            <span>Feel Better</span>
-          </div>
+          <span class="proof-text">Trusted by <strong>1,200+ beta users</strong></span>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-card-stack">
-          <div class="hero-card hero-card-1 tilt-card">
-            <div class="card-icon">&#x1F9E0;</div>
-            <span>Mindfulness Score</span>
-            <strong>92/100</strong>
-            <div class="card-bar"><div class="card-bar-fill" style="width:92%"></div></div>
-          </div>
-          <div class="hero-card hero-card-2 tilt-card">
-            <div class="card-icon">&#x1F4AA;</div>
-            <span>Activity Level</span>
-            <strong>High</strong>
-            <div class="card-bar"><div class="card-bar-fill" style="width:78%"></div></div>
-          </div>
-          <div class="hero-card hero-card-3 tilt-card">
-            <div class="card-icon">&#x1F31F;</div>
-            <span>Balance Index</span>
-            <strong>Excellent</strong>
-            <div class="card-bar"><div class="card-bar-fill" style="width:95%"></div></div>
+      <div class="hero-visual" data-animate="fade-up" data-delay="350">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-header"><span>Your AI Research Assistant</span><strong>Balance AI</strong></div>
+            <div class="phone-chat">
+              <div class="chat-bubble chat-user">What's the best evidence for Vitamin D and immunity?</div>
+              <div class="chat-bubble chat-ai">
+                <p>Based on 23 peer-reviewed studies, Vitamin D (1000–4000 IU/day) shows <strong>strong evidence</strong> for immune support...</p>
+                <div class="citation"><span class="grade grade-a">A</span> Martineau et al. — BMJ 2017</div>
+                <div class="citation"><span class="grade grade-b">B</span> Jolliffe et al. — Lancet 2021</div>
+              </div>
+            </div>
+            <div class="phone-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Shop Vitamin D
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="scroll-indicator" id="scroll-indicator">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
-      <span>Scroll to explore</span>
-    </div>
-  </section>
-
-  <!-- Marquee social proof -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        <span class="marquee-item">Featured in TechCrunch</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Apple App of the Day</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">50,000+ Happy Users</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">4.9 Star Rating</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Forbes Top AI Apps 2026</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Product Hunt #1</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Featured in TechCrunch</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Apple App of the Day</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">50,000+ Happy Users</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">4.9 Star Rating</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Forbes Top AI Apps 2026</span>
-        <span class="marquee-dot"></span>
-        <span class="marquee-item">Product Hunt #1</span>
-        <span class="marquee-dot"></span>
+        <!-- Glassmorphic rating badge -->
+        <div class="rating-badge">
+          <div class="rating-stars" aria-label="4.9 out of 5 stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <strong>4.9</strong>
+          <span>1,200+ users</span>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Features</span>
-        <h2>Everything You Need to <span class="gradient-text">Thrive</span></h2>
-        <p>Powerful AI tools designed to help you find balance in every aspect of life.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card tilt-card" data-animate="fade-up">
-          <div class="feature-icon" style="--accent: #6C5CE7;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="24" cy="24" r="20"/>
-              <path d="M24 14v10l7 7" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Smart Scheduling</h3>
-          <p>AI learns your peak hours and optimizes your daily routine for maximum productivity and rest.</p>
-          <div class="feature-card-shine"></div>
-        </div>
-        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="feature-icon" style="--accent: #00B894;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
-              <path d="M16 24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/>
-              <path d="M24 16v-6M24 38v-6M32 24h6M10 24h6"/>
-            </svg>
-          </div>
-          <h3>Mood Tracking</h3>
-          <p>Advanced sentiment analysis tracks your emotional patterns and suggests personalized improvements.</p>
-          <div class="feature-card-shine"></div>
-        </div>
-        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="feature-icon" style="--accent: #E17055;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M24 44s-16-8-16-22C8 12 14 6 24 14c10-8 16-2 16 8 0 14-16 22-16 22z"/>
-            </svg>
-          </div>
-          <h3>Wellness Insights</h3>
-          <p>Get actionable health recommendations based on your activity, sleep, and stress data.</p>
-          <div class="feature-card-shine"></div>
-        </div>
-        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="300">
-          <div class="feature-icon" style="--accent: #0984E3;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="6" y="10" width="36" height="28" rx="4"/>
-              <path d="M6 18h36"/>
-              <circle cx="16" cy="30" r="4"/>
-              <circle cx="32" cy="30" r="4"/>
-              <path d="M20 30h8"/>
-            </svg>
-          </div>
-          <h3>Focus Mode</h3>
-          <p>AI-powered distraction blocker adapts to your work style and helps you enter deep focus states.</p>
-          <div class="feature-card-shine"></div>
-        </div>
-        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="400">
-          <div class="feature-icon" style="--accent: #FDCB6E;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M24 4l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
-            </svg>
-          </div>
-          <h3>Goal Setting</h3>
-          <p>Set meaningful goals and let AI break them into achievable daily micro-tasks aligned with your energy.</p>
-          <div class="feature-card-shine"></div>
-        </div>
-        <div class="feature-card tilt-card" data-animate="fade-up" data-delay="500">
-          <div class="feature-icon" style="--accent: #A29BFE;">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 36V24M20 36V18M28 36V22M36 36V12"/>
-              <path d="M4 40h40"/>
-            </svg>
-          </div>
-          <h3>Progress Analytics</h3>
-          <p>Beautiful dashboards show your journey over time with deep insights into what's working for you.</p>
-          <div class="feature-card-shine"></div>
+    <div class="stats-bar" data-animate="fade-up" data-delay="500">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat"><strong data-count="1746">0</strong><span>Scientific Sources</span></div>
+          <div class="stat"><strong data-count="2207">0</strong><span>AI-Indexed Chunks</span></div>
+          <div class="stat"><strong data-count="43">0</strong><span>Supplements Covered</span></div>
+          <div class="stat"><strong class="stat-text">A–F</strong><span>Evidence Grading</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How It Works Section -->
-  <section class="how-it-works" id="how-it-works">
+  <!-- THE LOOP -->
+  <section class="section section--light" id="loop">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">How It Works</span>
-        <h2>Three Steps to <span class="gradient-text">Balance</span></h2>
-        <p>Getting started is simple. Our AI does the heavy lifting so you can focus on living.</p>
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">The Complete Loop</span>
+        <h2>From Discovery to <span class="text-gradient">Daily Habit</span></h2>
+        <p>Most supplement apps do one thing. Balance AI closes the entire loop.</p>
+      </header>
+      <div class="loop-grid" data-animate="fade-up" data-delay="100">
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><strong>Learn</strong><span>AI chat with citations</span></div>
+        <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><strong>Personalize</strong><span>Matched to your goals</span></div>
+        <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><strong>Purchase</strong><span>In-app via InFlow</span></div>
+        <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><strong>Remind</strong><span>Push + schedule</span></div>
+        <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div><strong>Track</strong><span>Daily checklist + XP</span></div>
+        <div class="loop-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+        <div class="loop-card"><div class="loop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><strong>Level Up</strong><span>Streaks + reorder</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">How It Works</span>
+        <h2>Powered by <span class="text-gradient">Real Science</span></h2>
+        <p>Every recommendation is backed by peer-reviewed research — not influencer marketing.</p>
+      </header>
       <div class="steps">
-        <div class="step" data-animate="fade-right" data-step="1">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <h3>Tell Us About You</h3>
-            <p>Take a quick 3-minute assessment. Our AI builds a personalized profile based on your goals, habits, and lifestyle preferences. No judgment, just understanding.</p>
-          </div>
-          <div class="step-visual">
-            <div class="step-mockup">
-              <div class="mockup-header">
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-              </div>
-              <div class="mockup-bar" style="width:90%"></div>
-              <div class="mockup-bar" style="width:65%"></div>
-              <div class="mockup-bar" style="width:80%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="step" data-animate="fade-left" data-step="2">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <h3>AI Creates Your Plan</h3>
-            <p>Within seconds, BalanceAI generates a dynamic daily plan that adapts to your schedule, energy levels, and evolving needs. It gets smarter every day.</p>
-          </div>
-          <div class="step-visual">
-            <div class="step-mockup ai-mockup">
-              <div class="ai-line"></div>
-              <div class="ai-line"></div>
-              <div class="ai-line"></div>
-              <div class="ai-pulse"></div>
-            </div>
-          </div>
-        </div>
-        <div class="step" data-animate="fade-right" data-step="3">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <h3>Live in Balance</h3>
-            <p>Follow gentle nudges throughout your day. Track your progress with beautiful insights and watch as your balance score grows. It's that simple.</p>
-          </div>
-          <div class="step-visual">
-            <div class="step-mockup balance-mockup">
-              <div class="balance-circle">
-                <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(108,92,231,0.15)" stroke-width="6"/>
-                  <circle class="balance-progress" cx="50" cy="50" r="40" fill="none" stroke="url(#progressGrad)" stroke-width="6" stroke-dasharray="251" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 50 50)"/>
-                  <defs>
-                    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#6C5CE7"/>
-                      <stop offset="100%" stop-color="#A29BFE"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <span>90%</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <article class="step" data-animate="fade-up"><div class="step-num">01</div><div class="step-content"><h3>Ask Anything About Longevity</h3><p>Our RAG-powered AI retrieves from 1,746 real sources via cosine similarity, then cites specific papers with confidence scores. Every source graded A through F.</p></div></article>
+        <article class="step" data-animate="fade-up" data-delay="150"><div class="step-num">02</div><div class="step-content"><h3>Get a Personalized Plan</h3><p>After a quick onboarding quiz about your goals, supplements, and diet, Balance AI creates a custom daily plan with scheduled reminders and dosage guidance.</p></div></article>
+        <article class="step" data-animate="fade-up" data-delay="300"><div class="step-num">03</div><div class="step-content"><h3>Build the Habit, Level Up</h3><p>Earn XP for every supplement taken, article read, and quiz completed. Maintain streaks, unlock achievements, and climb from Beginner to Legend across 10 levels.</p></div></article>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials" id="testimonials">
+  <!-- FEATURES -->
+  <section class="section section--light" id="features">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Stories</span>
-        <h2>Loved by <span class="gradient-text">Thousands</span></h2>
-        <p>Real people, real balance. Here's what our community has to say.</p>
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">Features</span>
+        <h2>Why <span class="text-gradient">Balance AI</span> Wins</h2>
+        <p>A unique combination no competitor offers: science-backed AI + habit gamification + frictionless commerce.</p>
+      </header>
+      <div class="features-grid">
+        <article class="feature-card" data-animate="fade-up">
+          <div class="feature-icon" style="--accent:#E918DA"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>RAG-Powered AI Chat</h3>
+          <p>Every answer retrieves from 1,746 real sources, cites specific papers with confidence scores and medical disclaimers.</p>
+          <span class="feature-tag tag-done">Working MVP</span>
+        </article>
+        <article class="feature-card" data-animate="fade-up" data-delay="100">
+          <div class="feature-icon" style="--accent:#6E79FF"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Evidence Grading (A–F)</h3>
+          <p>Every source scored by study type, journal credibility, and recency. Transparent quality grades that build real trust.</p>
+          <span class="feature-tag tag-done">Working MVP</span>
+        </article>
+        <article class="feature-card" data-animate="fade-up" data-delay="200">
+          <div class="feature-icon" style="--accent:#3FA0F5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Duolingo-Style Gamification</h3>
+          <p>XP for every action, 10 levels from Beginner to Legend, daily streaks with freezes, achievement badges, and level-up celebrations.</p>
+          <span class="feature-tag tag-planned">Phase 3</span>
+        </article>
+        <article class="feature-card" data-animate="fade-up" data-delay="300">
+          <div class="feature-icon" style="--accent:#8EDFF7"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><path d="M1 10h22"/></svg></div>
+          <h3>In-App Commerce via InFlow</h3>
+          <p>Curated supplement shop personalized to each user. InFlow handles payment and fulfillment. Revenue: 3% per transaction.</p>
+          <span class="feature-tag tag-planned">Phase 4</span>
+        </article>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS — Social proof before CTA per landing pattern -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">Social Proof</span>
+        <h2>What Beta Users <span class="text-gradient">Are Saying</span></h2>
+        <p>Real people, real results. Here's what our community has to say.</p>
+      </header>
       <div class="testimonial-grid">
-        <div class="testimonial-card tilt-card" data-animate="fade-up">
-          <div class="testimonial-quote-icon">"</div>
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"BalanceAI completely transformed my morning routine. I went from chaotic to calm in just two weeks. The AI suggestions are scarily accurate."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #6C5CE7, #A29BFE);">S</div>
-            <div>
-              <strong>Sarah Chen</strong>
-              <span>Product Designer</span>
-            </div>
+        <article class="testimonial-card" data-animate="fade-up">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-        </div>
-        <div class="testimonial-card tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="testimonial-quote-icon">"</div>
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"As a founder, I was burning out fast. BalanceAI helped me see patterns I was blind to and build sustainable habits. Game changer."</p>
+          <blockquote>"The AI actually cites real papers — not just generic advice. I finally trust the recommendations I'm getting about my supplements."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #00B894, #55EFC4);">M</div>
-            <div>
-              <strong>Marcus Johnson</strong>
-              <span>Startup Founder</span>
-            </div>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#E918DA,#F3A8FD)">K</span>
+            <div><strong>Katarina M.</strong><span>Biohacker & Nurse</span></div>
           </div>
-        </div>
-        <div class="testimonial-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="testimonial-quote-icon">"</div>
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"The mood tracking feature is incredible. It caught my stress patterns before I even noticed them. My therapist recommended it!"</p>
+        </article>
+        <article class="testimonial-card tc-featured" data-animate="fade-up" data-delay="100">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"The streak system is addictive — in a good way. I haven't missed a supplement in 47 days. The evidence grading makes me feel like a scientist."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar" style="background: linear-gradient(135deg, #E17055, #FAB1A0);">A</div>
-            <div>
-              <strong>Aisha Patel</strong>
-              <span>Graduate Student</span>
-            </div>
+            <span class="avatar" style="--bg:linear-gradient(135deg,#6E79FF,#3FA0F5)">M</span>
+            <div><strong>Marcus J.</strong><span>Startup Founder</span></div>
           </div>
-        </div>
+        </article>
+        <article class="testimonial-card" data-animate="fade-up" data-delay="200">
+          <div class="testimonial-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"I asked about magnesium forms and it gave me a breakdown with 8 cited studies ranked by quality. No other app does this."</blockquote>
+          <div class="testimonial-author">
+            <span class="avatar" style="--bg:linear-gradient(135deg,#3FA0F5,#8EDFF7)">A</span>
+            <div><strong>Aisha P.</strong><span>Graduate Researcher</span></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section class="pricing" id="pricing">
+  <!-- COMPARE TABLE -->
+  <section class="section section--light" id="compare">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Pricing</span>
-        <h2>Simple, <span class="gradient-text">Transparent</span> Pricing</h2>
-        <p>Start free, upgrade when you're ready. No hidden fees, ever.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="pricing-card tilt-card" data-animate="fade-up">
-          <div class="pricing-name">Free</div>
-          <div class="pricing-price">$0<span>/month</span></div>
-          <ul class="pricing-features">
-            <li>Basic mood tracking</li>
-            <li>Daily balance score</li>
-            <li>3 AI suggestions/day</li>
-            <li>Community access</li>
-          </ul>
-          <a href="#cta" class="btn btn-secondary btn-block magnetic">Get Started</a>
-        </div>
-        <div class="pricing-card pricing-card-featured tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="pricing-badge">Most Popular</div>
-          <div class="pricing-name">Pro</div>
-          <div class="pricing-price">$12<span>/month</span></div>
-          <ul class="pricing-features">
-            <li>Everything in Free</li>
-            <li>Unlimited AI insights</li>
-            <li>Smart scheduling</li>
-            <li>Focus mode</li>
-            <li>Progress analytics</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="#cta" class="btn btn-primary btn-block magnetic">Start Free Trial</a>
-        </div>
-        <div class="pricing-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="pricing-name">Team</div>
-          <div class="pricing-price">$29<span>/month</span></div>
-          <ul class="pricing-features">
-            <li>Everything in Pro</li>
-            <li>Team wellness dashboard</li>
-            <li>Admin controls</li>
-            <li>API access</li>
-            <li>Custom integrations</li>
-            <li>Dedicated support</li>
-          </ul>
-          <a href="#cta" class="btn btn-secondary btn-block magnetic">Contact Sales</a>
-        </div>
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">Market Position</span>
+        <h2>How We <span class="text-gradient">Stack Up</span></h2>
+        <p>The only platform combining cited AI, gamification, and commerce.</p>
+      </header>
+      <div class="table-wrap" data-animate="fade-up" data-delay="100">
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>ChatGPT</th><th>Examine</th><th>MyFitnessPal</th><th class="col-hl">Balance AI</th></tr></thead>
+          <tbody>
+            <tr><td>AI Chat</td><td class="muted">Generic</td><td class="muted">—</td><td class="muted">—</td><td class="col-hl highlight">Cited + graded</td></tr>
+            <tr><td>Research</td><td class="muted">Hallucination risk</td><td>Paid</td><td class="muted">—</td><td class="col-hl highlight">Free, summarized</td></tr>
+            <tr><td>Personalization</td><td class="muted">None</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Progressive profiling</td></tr>
+            <tr><td>Reminders</td><td class="muted">—</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Push + schedule</td></tr>
+            <tr><td>Gamification</td><td class="muted">—</td><td class="muted">—</td><td>Basic</td><td class="col-hl highlight">Full Duolingo model</td></tr>
+            <tr><td>Commerce</td><td class="muted">—</td><td>Affiliate</td><td class="muted">—</td><td class="col-hl highlight">In-app checkout</td></tr>
+            <tr><td>Mobile</td><td class="muted">—</td><td class="muted">—</td><td>Native</td><td class="col-hl highlight">PWA (installable)</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- WHAT'S BUILT -->
+  <section class="section" id="built">
+    <div class="container">
+      <header class="section-header" data-animate="fade-up">
+        <span class="label">Current Status</span>
+        <h2>What's Already <span class="text-gradient">Built</span></h2>
+        <p>The hardest parts — AI, knowledge base, RAG pipeline, scoring — are working today.</p>
+      </header>
+      <div class="built-grid">
+        <div class="built-card built-done" data-animate="fade-up"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>AI Knowledge Base</h4><p>1,746 sources from PubMed + Examine</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="50"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>RAG Chat + Citations</h4><p>GPT-4o, cosine similarity, confidence</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="100"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Evidence Grading</h4><p>Gravity scoring: type, journal, recency</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="150"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Research Library</h4><p>Search + filter by 6 categories</p></div>
+        <div class="built-card built-done" data-animate="fade-up" data-delay="200"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/></svg> Done</span><h4>Web App + Pipeline</h4><p>Next.js 15, FastAPI, auto-ingestion</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="250"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 1–2</span><h4>Auth + PWA</h4><p>Supabase, onboarding, push notifs</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="300"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 3</span><h4>Gamification</h4><p>XP, streaks, levels, badges</p></div>
+        <div class="built-card built-planned" data-animate="fade-up" data-delay="350"><span class="built-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Phase 4</span><h4>Commerce</h4><p>InFlow checkout, order tracking</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — with glowing orbs for depth -->
   <section class="cta" id="cta">
-    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="cta-orb cta-orb--pink"></div>
+    <div class="cta-orb cta-orb--blue"></div>
     <div class="container">
-      <div class="cta-content" data-animate="fade-up">
-        <h2>Ready to Find Your <span class="gradient-text">Balance</span>?</h2>
-        <p>Join 50,000+ people who have transformed their lives with BalanceAI. Start your free trial today — no credit card required.</p>
+      <div class="cta-inner" data-animate="fade-up">
+        <h2>Ready to Build the Future of <span class="text-gradient">Wellness</span>?</h2>
+        <p>The AI infrastructure is built. The product vision is clear. Join 1,200+ beta users.</p>
         <form class="cta-form" id="cta-form">
-          <div class="input-group">
-            <input type="email" placeholder="Enter your email" required aria-label="Email address">
-            <button type="submit" class="btn btn-primary magnetic">Get Started Free</button>
+          <div class="input-row">
+            <label for="cta-email" class="sr-only">Email address</label>
+            <input id="cta-email" type="email" placeholder="Enter your email for early access" required>
+            <button type="submit" class="btn btn-primary">Get Early Access</button>
           </div>
         </form>
-        <p class="cta-note">Free 14-day trial &middot; No credit card required &middot; Cancel anytime</p>
+        <p class="cta-fine">Free during beta · No spam · Cancel anytime</p>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="nav-logo">
-            <span class="logo-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M10 20 L16 10 L22 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="16" cy="10" r="3" fill="currentColor"/>
-              </svg>
-            </span>
-            BalanceAI
-          </a>
-          <p>AI-powered wellness for a more balanced life. Built with care for people who care about themselves.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Product</h4>
-          <a href="#">Features</a>
-          <a href="#">Pricing</a>
-          <a href="#">Integrations</a>
-          <a href="#">Changelog</a>
-        </div>
-        <div class="footer-links">
-          <h4>Company</h4>
-          <a href="#">About</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
-          <a href="#">Press</a>
-        </div>
-        <div class="footer-links">
-          <h4>Support</h4>
-          <a href="#">Help Center</a>
-          <a href="#">Community</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 BalanceAI. All rights reserved.</p>
-      </div>
+    <div class="container footer-inner">
+      <a href="#" class="logo"><span class="logo-wordmark">B A L<span class="logo-a">&Lambda;</span>N C E</span><sup class="logo-sup">AI</sup></a>
+      <p class="footer-tagline">your wellness buddy</p>
+      <p class="footer-copy">&copy; 2026 Balance AI. All rights reserved.</p>
     </div>
   </footer>
 
