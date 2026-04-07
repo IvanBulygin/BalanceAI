@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1565C0">
+  <title>Courier — Active Order Tracking</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========================================================
+       ANIMATED CHARACTER (Balance AI mascot — blue body, flame head)
+       Floats alongside the UI and reacts to order state changes.
+       ======================================================== -->
+  <div id="character" class="character" aria-hidden="true">
+    <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" class="character-svg">
+      <defs>
+        <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%">
+          <stop offset="0%" stop-color="#E918DA"/>
+          <stop offset="50%" stop-color="#F3A8FD"/>
+          <stop offset="100%" stop-color="#FF6BF0"/>
+        </linearGradient>
+        <linearGradient id="bodyBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4DA3F7"/>
+          <stop offset="100%" stop-color="#3B8DE8"/>
+        </linearGradient>
+        <linearGradient id="armBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5AADFF"/>
+          <stop offset="100%" stop-color="#3A8EE6"/>
+        </linearGradient>
+        <linearGradient id="legPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#9B7AEA"/>
+          <stop offset="100%" stop-color="#7C5CE7"/>
+        </linearGradient>
+        <linearGradient id="legPink" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E86BCD"/>
+          <stop offset="100%" stop-color="#D94FC0"/>
+        </linearGradient>
+      </defs>
+      <!-- Flame head -->
+      <g class="char-head">
+        <path class="char-flame" d="M80 22 C95 22 108 35 110 52 C112 65 105 78 95 82 C90 84 85 85 80 85 C75 85 70 84 65 82 C55 78 48 65 50 52 C52 35 65 22 80 22Z" fill="url(#flameGrad)"/>
+        <path class="char-flame-tip char-flame-tip-1" d="M68 30 Q62 10 70 18 Q72 22 68 30Z" fill="#FF8EF5" opacity="0.8"/>
+        <path class="char-flame-tip char-flame-tip-2" d="M80 25 Q80 4 84 12 Q85 18 80 25Z" fill="#FFA8F8" opacity="0.7"/>
+        <path class="char-flame-tip char-flame-tip-3" d="M92 30 Q98 12 93 20 Q91 25 92 30Z" fill="#FF8EF5" opacity="0.8"/>
+      </g>
+      <!-- Eyes -->
+      <g class="char-eye char-eye-left">
+        <ellipse cx="70" cy="58" rx="5" ry="5.5" fill="#1A1A2E"/>
+        <ellipse class="char-pupil" cx="71" cy="57" rx="2" ry="2.2" fill="#FFFFFF"/>
+      </g>
+      <g class="char-eye char-eye-right">
+        <ellipse cx="90" cy="58" rx="5" ry="5.5" fill="#1A1A2E"/>
+        <ellipse class="char-pupil" cx="91" cy="57" rx="2" ry="2.2" fill="#FFFFFF"/>
+      </g>
+      <!-- Mouth -->
+      <path class="char-mouth" d="M73 70 Q80 77 87 70" stroke="#1A1A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Body -->
+      <rect class="char-body" x="62" y="82" width="36" height="44" rx="18" fill="url(#bodyBlue)"/>
+      <!-- Left arm + glove -->
+      <g class="char-arm char-arm-left">
+        <path d="M62 92 Q38 80 28 68" stroke="url(#armBlue)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <circle cx="26" cy="66" r="10" fill="#FFFFFF" stroke="#E8E8E8" stroke-width="1"/>
+      </g>
+      <!-- Right arm + glove -->
+      <g class="char-arm char-arm-right">
+        <path d="M98 92 Q122 80 132 68" stroke="url(#armBlue)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <circle cx="134" cy="66" r="10" fill="#FFFFFF" stroke="#E8E8E8" stroke-width="1"/>
+      </g>
+      <!-- Left leg (purple) -->
+      <g class="char-leg char-leg-left">
+        <path d="M72 122 Q58 150 48 172" stroke="url(#legPurple)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <ellipse cx="46" cy="176" rx="12" ry="6" fill="#8B6FE0"/>
+      </g>
+      <!-- Right leg (pink) -->
+      <g class="char-leg char-leg-right">
+        <path d="M88 122 Q102 150 112 172" stroke="url(#legPink)" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <ellipse cx="114" cy="176" rx="12" ry="6" fill="#D94FC0"/>
+      </g>
+      <!-- Sparkles -->
+      <g class="char-sparkles">
+        <circle cx="20" cy="45" r="2.5" fill="#F3A8FD" opacity="0"/>
+        <circle cx="140" cy="50" r="2" fill="#6E79FF" opacity="0"/>
+        <circle cx="25" cy="145" r="2" fill="#3FA0F5" opacity="0"/>
+        <circle cx="135" cy="140" r="2.5" fill="#FF6BF0" opacity="0"/>
+      </g>
+    </svg>
+    <div class="character-speech" id="character-speech"></div>
+  </div>
+
+  <!-- ========================================================
+       TOP STATUS BAR
+       UX: Always-visible order state at the top.
+       High-contrast white-on-blue for outdoor legibility.
+       48px min height for quick glanceability.
+       ======================================================== -->
+  <header class="status-bar" id="status-bar">
+    <div class="status-bar-inner">
+      <button class="icon-btn" id="btn-back" aria-label="Go back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="status-bar-center">
+        <span class="status-label" id="status-label">Heading to Pickup</span>
+        <span class="order-id" id="order-id">Order #4821</span>
+      </div>
+      <button class="icon-btn" id="btn-emergency" aria-label="Report issue">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAP AREA
+       UX: Takes up the majority of viewport on mobile.
+       Simulated route with SVG path and animated courier dot.
+       Dark map background for contrast.
+       ======================================================== -->
+  <section class="map-container" id="map-container">
+    <div class="map-surface">
+      <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+        <!-- Grid lines for spatial reference -->
+        <g class="map-grid" opacity="0.06">
+          <line x1="0" y1="50" x2="400" y2="50" stroke="#fff"/>
+          <line x1="0" y1="100" x2="400" y2="100" stroke="#fff"/>
+          <line x1="0" y1="150" x2="400" y2="150" stroke="#fff"/>
+          <line x1="0" y1="200" x2="400" y2="200" stroke="#fff"/>
+          <line x1="0" y1="250" x2="400" y2="250" stroke="#fff"/>
+          <line x1="80" y1="0" x2="80" y2="300" stroke="#fff"/>
+          <line x1="160" y1="0" x2="160" y2="300" stroke="#fff"/>
+          <line x1="240" y1="0" x2="240" y2="300" stroke="#fff"/>
+          <line x1="320" y1="0" x2="320" y2="300" stroke="#fff"/>
+        </g>
+
+        <!-- Route path (dashed = remaining, solid = traveled) -->
+        <path id="route-full" class="route-path route-remaining" d="M60 240 Q60 180 120 160 Q180 140 220 100 Q260 60 340 70" fill="none"/>
+        <path id="route-traveled" class="route-path route-traveled" d="M60 240 Q60 180 120 160 Q180 140 220 100 Q260 60 340 70" fill="none"/>
+
+        <!-- Pickup marker (A) -->
+        <g class="map-marker marker-pickup" id="marker-pickup">
+          <circle cx="60" cy="240" r="14" fill="#1565C0" stroke="#fff" stroke-width="2.5"/>
+          <text x="60" y="245" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Inter, sans-serif">A</text>
+          <text x="60" y="268" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-weight="600" font-family="Inter, sans-serif">PICKUP</text>
+        </g>
+
+        <!-- Dropoff marker (B) -->
+        <g class="map-marker marker-dropoff" id="marker-dropoff">
+          <circle cx="340" cy="70" r="14" fill="#E65100" stroke="#fff" stroke-width="2.5"/>
+          <text x="340" y="75" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Inter, sans-serif">B</text>
+          <text x="340" y="98" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9" font-weight="600" font-family="Inter, sans-serif">DROP-OFF</text>
+        </g>
+
+        <!-- Courier position dot (animated along route) -->
+        <g id="courier-dot" class="courier-dot">
+          <circle r="18" fill="#1565C0" opacity="0.2" class="courier-pulse"/>
+          <circle r="10" fill="#1565C0" stroke="#fff" stroke-width="3"/>
+          <circle r="4" fill="#fff"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ETA overlay on map -->
+    <div class="eta-overlay" id="eta-overlay">
+      <div class="eta-value" id="eta-value">8 min</div>
+      <div class="eta-label">ETA to pickup</div>
+    </div>
+
+    <!-- Recenter button -->
+    <button class="fab-recenter" id="btn-recenter" aria-label="Re-center map">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+    </button>
+  </section>
+
+  <!-- ========================================================
+       ORDER DETAILS PANEL
+       UX: Bottom sheet pattern — familiar to delivery drivers.
+       Swipe-up handle for progressive disclosure.
+       All touch targets 48px minimum.
+       8pt grid spacing throughout.
+       ======================================================== -->
+  <section class="order-panel" id="order-panel">
+    <div class="panel-handle" id="panel-handle"><span></span></div>
+
+    <!-- Address Cards -->
+    <div class="address-cards">
+      <div class="address-card">
+        <div class="address-icon pickup-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="address-text">
+          <span class="address-label">Pickup</span>
+          <strong class="address-line" id="pickup-address">Café Aroma — 312 Market St</strong>
+          <span class="address-detail" id="pickup-detail">2 items · Ready for pickup</span>
+        </div>
+      </div>
+      <div class="address-divider"><span class="divider-line"></span><span class="divider-dot"></span></div>
+      <div class="address-card">
+        <div class="address-icon dropoff-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="address-text">
+          <span class="address-label">Drop-off</span>
+          <strong class="address-line" id="dropoff-address">Jane D. — 1480 Elm Ave, Apt 3B</strong>
+          <span class="address-detail" id="dropoff-detail">Leave at door · "Ring the bell"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Items Summary -->
+    <div class="order-items" id="order-items">
+      <div class="order-item">
+        <span class="item-qty">1×</span>
+        <span class="item-name">Iced Oat Latte (Large)</span>
+      </div>
+      <div class="order-item">
+        <span class="item-qty">1×</span>
+        <span class="item-name">Almond Croissant</span>
+      </div>
+    </div>
+
+    <!-- Delay Alert (hidden by default, shown via JS) -->
+    <div class="delay-alert" id="delay-alert" hidden>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div>
+        <strong id="delay-title">Delayed — Heavy traffic</strong>
+        <span id="delay-detail">ETA updated to 14 min</span>
+      </div>
+    </div>
+
+    <!-- Primary Action Button -->
+    <div class="action-area">
+      <button class="btn-primary-action" id="btn-action">
+        <span class="btn-action-icon" id="btn-action-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <span class="btn-action-text" id="btn-action-text">Confirm Pickup</span>
+      </button>
+    </div>
+
+    <!-- Secondary Actions -->
+    <div class="secondary-actions">
+      <button class="btn-secondary" id="btn-call">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68a2 2 0 011.72 2.01z"/></svg>
+        <span>Call Customer</span>
+      </button>
+      <button class="btn-secondary" id="btn-navigate">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <span>Navigate</span>
+      </button>
+      <button class="btn-secondary" id="btn-chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>Message</span>
+      </button>
+    </div>
+
+    <!-- Earnings for this order -->
+    <div class="earnings-bar" id="earnings-bar">
+      <span class="earnings-label">Estimated earnings</span>
+      <strong class="earnings-value" id="earnings-value">$8.40</strong>
+    </div>
+  </section>
+
+  <!-- Toast notification container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
