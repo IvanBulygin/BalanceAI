@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 440" fill="none">
+  <defs>
+    <linearGradient id="bp-body" x1="180" y1="120" x2="180" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3FA0F5"/>
+      <stop offset="0.6" stop-color="#9B6BFF"/>
+      <stop offset="1" stop-color="#E918DA"/>
+    </linearGradient>
+    <linearGradient id="bp-head" x1="130" y1="80" x2="130" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E918DA"/>
+      <stop offset="0.5" stop-color="#9B6BFF"/>
+      <stop offset="1" stop-color="#3FA0F5"/>
+    </linearGradient>
+    <radialGradient id="bp-glow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#C77AFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#C77AFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Tennis ball top right -->
+  <circle cx="325" cy="40" r="16" fill="#E8F5A8" stroke="#000" stroke-width="2"/>
+  <path d="M312 34 Q325 42 338 36" stroke="#000" stroke-width="1.5" fill="none"/>
+  <path d="M312 48 Q325 40 338 50" stroke="#000" stroke-width="1.5" fill="none"/>
+
+  <!-- Head glow -->
+  <ellipse cx="130" cy="140" rx="62" ry="68" fill="url(#bp-glow)"/>
+
+  <!-- Raised Right arm (diagonal up to the ball) -->
+  <path d="M195 210 Q260 120 315 50 Q330 45 335 60 Q325 85 275 145 Q230 200 215 225 Z"
+        fill="url(#bp-body)" stroke="#000" stroke-width="2"/>
+
+  <!-- Left arm back -->
+  <path d="M130 215 Q80 230 50 280 Q40 295 55 300 Q85 285 130 260 Z"
+        fill="url(#bp-body)" stroke="#000" stroke-width="2"/>
+
+  <!-- Dynamic body / torso -->
+  <path d="M110 200 Q100 180 130 175 Q165 170 200 190 Q215 210 205 255 Q200 300 170 320 L170 400 Q168 425 150 425 Q132 425 130 400 L130 340 L120 340 L115 395 Q112 425 92 425 Q72 425 78 395 L95 290 Q90 250 110 220 Z"
+        fill="url(#bp-body)" stroke="#000" stroke-width="2"/>
+
+  <!-- Head (flame tilted slightly) -->
+  <path d="M130 75 Q158 85 154 118 Q176 132 164 165 Q152 193 130 205 Q108 193 96 165 Q84 132 106 118 Q102 85 130 75 Z"
+        fill="url(#bp-head)" stroke="#000" stroke-width="2"/>
+
+  <!-- Visor -->
+  <rect x="100" y="130" width="60" height="22" rx="11" fill="#000"/>
+
+  <!-- Dot eyes -->
+  <circle cx="118" cy="141" r="3.2" fill="#fff"/>
+  <circle cx="142" cy="141" r="3.2" fill="#fff"/>
+  <line x1="116" y1="138" x2="116" y2="144" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="144" y1="138" x2="144" y2="144" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Smile -->
+  <path d="M114 165 Q130 180 146 165" stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>
