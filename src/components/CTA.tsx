@@ -22,7 +22,21 @@ export default function CTA() {
       <img src={`${import.meta.env.BASE_URL}swoosh.svg`} alt="" className="swoosh swoosh-cta" aria-hidden="true" />
       <div className="container">
         <motion.div className="cta-inner" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <img src={`${import.meta.env.BASE_URL}mascot.png`} alt="Balance AI mascot" className="mascot mascot-cta" />
+          <motion.img
+            src={`${import.meta.env.BASE_URL}mascot.png`}
+            alt="Balance AI mascot"
+            className="mascot mascot-cta"
+            animate={{
+              y: [0, -14, -10, 0],
+              scale: [1, 1.06, 1.03, 1],
+            }}
+            transition={{
+              duration: 2.5,
+              ease: 'easeInOut',
+              repeat: Infinity,
+            }}
+            whileHover={{ scale: 1.15, y: -20, transition: { duration: 0.3, type: 'spring' } }}
+          />
           <h2>Ready to Build the Future of <span className="text-gradient">Wellness</span>?</h2>
           <p>The AI infrastructure is built. The product vision is clear. Let's bring science-backed wellness to everyone.</p>
           <form className="cta-form" onSubmit={handleSubmit}>
