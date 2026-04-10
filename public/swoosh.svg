@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="sw-grad" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3FA0F5"/>
+      <stop offset="0.5" stop-color="#9B6BFF"/>
+      <stop offset="1" stop-color="#E918DA"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 120 Q100 60 200 100 Q340 150 400 220 Q460 290 540 340"
+        stroke="url(#sw-grad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <!-- Inline S-curve accent -->
+  <path d="M60 120 Q240 40 360 160 Q460 260 540 340"
+        stroke="url(#sw-grad)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.35"/>
+</svg>
