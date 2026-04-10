@@ -22,7 +22,6 @@ export default function Nav() {
           <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Balance AI" className="logo-img" />
         </a>
         <div className={`nav-links${mobileOpen ? ' open' : ''}`}>
-          <a onClick={() => scrollTo('meet')}>Meet Balance</a>
           <a onClick={() => scrollTo('how-it-works')}>How It Works</a>
           <a onClick={() => scrollTo('features')}>Features</a>
           <a onClick={() => scrollTo('compare')}>Compare</a>

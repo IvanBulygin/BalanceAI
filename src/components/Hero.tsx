@@ -48,7 +48,7 @@ export default function Hero() {
         </div>
         <motion.div className="hero-visual" variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={4}>
           <img src={`${import.meta.env.BASE_URL}swoosh.svg`} alt="" className="swoosh swoosh-hero" aria-hidden="true" />
-          <img src={`${import.meta.env.BASE_URL}mascot-play.svg`} alt="Balance AI mascot" className="mascot mascot-hero" />
+          <img src={`${import.meta.env.BASE_URL}mascot.png`} alt="Balance AI mascot" className="mascot mascot-hero" />
           <div className="phone-mockup">
             <div className="phone-notch" />
             <div className="phone-screen">

@@ -1,7 +1,6 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Loop from './components/Loop'
-import MeetBalance from './components/MeetBalance'
 import HowItWorks from './components/HowItWorks'
 import Features from './components/Features'
 import Compare from './components/Compare'
@@ -24,7 +23,6 @@ export default function App() {
       <Nav />
       <Hero />
       <Loop />
-      <MeetBalance />
       <HowItWorks />
       <Features />
       <Compare />

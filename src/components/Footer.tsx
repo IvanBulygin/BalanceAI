@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <img src={`${import.meta.env.BASE_URL}mascot-meditate.svg`} alt="Balance AI mascot" className="mascot mascot-footer" />
+        <img src={`${import.meta.env.BASE_URL}mascot.png`} alt="Balance AI mascot" className="mascot mascot-footer" />
         <a href="#" className="logo">
           <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Balance AI" className="logo-img" />
         </a>

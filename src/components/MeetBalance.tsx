@@ -10,9 +10,9 @@ const fadeUp = {
 }
 
 const mascots = [
-  { id: 'meditate', img: 'mascot-meditate.svg', title: 'Center', desc: 'Start calm. Mindful nudges guide your morning routine.' },
-  { id: 'play', img: 'mascot-play.svg', title: 'Move', desc: 'Stay active. Playful streaks keep every day in motion.' },
-  { id: 'celebrate', img: 'mascot-celebrate.svg', title: 'Celebrate', desc: 'Level up. Every streak, badge and habit earned is a win.' },
+  { id: 'meditate', img: 'mascot.png', title: 'Center', desc: 'Start calm. Mindful nudges guide your morning routine.' },
+  { id: 'play', img: 'mascot.png', title: 'Move', desc: 'Stay active. Playful streaks keep every day in motion.' },
+  { id: 'celebrate', img: 'mascot.png', title: 'Celebrate', desc: 'Level up. Every streak, badge and habit earned is a win.' },
 ]
 
 export default function MeetBalance() {
